@@ -1,0 +1,43 @@
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: #0f0a1f; 
+}
+
+.hero-gradient { 
+    background: linear-gradient(to right, #f472b6, #a855f7, #6366f1); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+
+.glass-card { 
+    background: rgba(26, 18, 48, 0.7); 
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(168, 85, 247, 0.2); 
+    transition: 0.3s; 
+}
+
+@keyframes float { 
+    0%, 100% { transform: translateY(0) rotate(12deg); } 
+    50% { transform: translateY(-10px) rotate(15deg); } 
+}
+.plane-anim { animation: float 3s ease-in-out infinite; }
+
+.work-item { 
+    position: relative; 
+    overflow: hidden; 
+    background: #000; 
+    cursor: pointer; 
+}
+.work-item::after { 
+    content: 'PREVIEW'; 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(168, 85, 247, 0.5); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    opacity: 0; 
+    transition: 0.3s; 
+    font-weight: 900; 
+}
+.work-item:hover::after { opacity: 1; }
