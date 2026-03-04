@@ -14,42 +14,46 @@
     <style>
         :root {
             --bg-dark: #0f0a1f;
-            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #f472b6 100%);
+            --accent-gradient: linear-gradient(135deg, #0284c7 0%, #7e22ce 50%, #be185d 100%);
         }
         
         body { 
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif; 
+            font-family: 'SF Pro Display', sans-serif; 
             background-color: var(--bg-dark); 
             scroll-behavior: smooth; 
         }
 
-        /* Bold Display Styling */
-        h1, h2, .nav-logo, .nav-link-mobile { 
+        /* Headlines ke liye bold style barkarar rakha hai */
+        h1, h2, .nav-logo { 
             font-weight: 800; 
             letter-spacing: -0.02em;
         }
         
+        /* Regular Font Class (SF Pro Display Regular) */
+        .font-sf-regular {
+            font-family: 'SF Pro Display', sans-serif;
+            font-weight: 400; /* Regular weight */
+        }
+
         .hero-gradient { 
-            background: var(--accent-gradient); 
+            background: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #f472b6 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
 
-        /* Theme Matched Button */
         .btn-theme {
             background: var(--accent-gradient);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .btn-theme:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5);
-            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(126, 34, 206, 0.4);
         }
 
-        /* Mobile Menu Overlay */
         #mobile-menu {
-            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             transform: translateY(-100%);
         }
         #mobile-menu.active {
@@ -57,10 +61,14 @@
         }
 
         .nav-link-mobile {
-            font-size: 2.5rem;
-            transition: 0.3s;
+            font-family: 'SF Pro Display', sans-serif;
+            font-size: 1.1rem; /* Phone ke liye perfect size */
+            font-weight: 400;   /* Pure Regular */
+            letter-spacing: 0.02em;
+            transition: 0.2s;
+            color: #cbd5e1;
         }
-        .nav-link-mobile:hover { color: #a855f7; }
+        .nav-link-mobile:hover { color: #ffffff; }
         
         .plane-anim { animation: fly 3s ease-in-out infinite; }
         @keyframes fly { 
@@ -71,7 +79,7 @@
 </head>
 <body class="text-white overflow-x-hidden">
 
-    <nav class="fixed top-0 w-full z-[100] bg-[#0f0a1f]/80 backdrop-blur-2xl border-b border-white/5">
+    <nav class="fixed top-0 w-full z-[100] bg-[#0f0a1f]/90 backdrop-blur-2xl border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             
             <div class="flex items-center gap-3 shrink-0">
@@ -83,7 +91,7 @@
                 </span>
             </div>
 
-            <div class="hidden md:flex items-center gap-8 font-semibold text-[11px] uppercase tracking-[0.2em] text-gray-400">
+            <div class="hidden md:flex items-center gap-8 font-sf-regular text-[12px] uppercase tracking-[0.15em] text-gray-400">
                 <a href="#home" class="hover:text-white transition-colors">Home</a>
                 <a href="#services" class="hover:text-white transition-colors">Services</a>
                 <a href="#work" class="hover:text-white transition-colors">Work</a>
@@ -91,68 +99,76 @@
                 <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
             </div>
 
-            <div class="flex items-center gap-4">
-                <a href="https://calendly.com/sky-bound/30min" target="_blank" 
-                   class="btn-theme hidden sm:block px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest text-white shadow-lg">
-                   Claim Free Audit
-                </a>
-                
-                <button id="menu-toggle" class="z-[110] bg-white/5 p-2.5 rounded-xl border border-white/10 hover:bg-white/10 transition">
-                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6 text-white"></i>
-                </button>
-            </div>
-        </div>
+    <style>
+    .btn-theme {
+        /* Gradient ko dark aur refined kiya taake corners saaf lagein */
+        background: linear-gradient(135deg, #0284c7 0%, #7e22ce 50%, #be185d 100%);
+        background-origin: border-box; /* Gradient ko border ke andar lock karta hai */
+        
+        /* Overflow hidden un dots ko cut kar dega */
+        overflow: hidden; 
+        position: relative;
+        z-index: 1;
+        
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        /* Shadow ko soft kiya taake corners par pressure na paray */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-theme:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 25px rgba(126, 34, 206, 0.3);
+    }
+</style>
+<div class="flex items-center gap-2 md:gap-3"> 
+    <a href="https://calendly.com/sky-bound/30min" target="_blank" 
+       class="btn-theme hidden sm:block px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-[0.15em] text-white">
+        Claim Free Audit
+    </a>
+    
+    <button id="menu-toggle" class="z-[110] bg-white/5 p-2.5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+        <i data-lucide="menu" id="menu-icon" class="w-6 h-6 text-white"></i>
+    </button>
+</div>
     </nav>
 
     <div id="mobile-menu" class="fixed inset-0 bg-[#0f0a1f] z-[95] flex flex-col justify-center items-center">
-        <div class="flex flex-col items-center gap-6 text-center">
-            <a href="#home" class="nav-link-mobile">HOME</a>
-            <a href="#services" class="nav-link-mobile">SERVICES</a>
-            <a href="#work" class="nav-link-mobile">WORK</a>
-            <a href="#pricing" class="nav-link-mobile">PRICING</a>
+        <div class="flex flex-col items-center gap-7 text-center">
+            <a href="#home" class="nav-link-mobile">Home</a>
+            <a href="#services" class="nav-link-mobile">Services</a>
+            <a href="#work" class="nav-link-mobile">Work</a>
+            <a href="#pricing" class="nav-link-mobile">Pricing</a>
             <a href="#faq" class="nav-link-mobile">FAQ</a>
-            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="nav-link-mobile hero-gradient">BOOK A CALL</a>
+            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="nav-link-mobile text-white font-semibold border-t border-white/10 pt-5 mt-2">Book a Call</a>
         </div>
 
-        <div class="mt-16 flex flex-col items-center gap-4">
-            <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] uppercase">Connect With Us</p>
+        <div class="absolute bottom-12 flex flex-col items-center gap-4">
+            <p class="text-gray-600 font-sf-regular tracking-[0.3em] text-[9px] uppercase">Connect With Us</p>
             <div class="flex gap-8">
-                <a href="https://www.instagram.com/skyboundwork?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="hover:text-fuchsia-400 transition transform hover:scale-110">
-                    <i data-lucide="instagram" class="w-7 h-7"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/112011251/admin/dashboard/" target="_blank" class="hover:text-blue-400 transition transform hover:scale-110">
-                    <i data-lucide="linkedin" class="w-7 h-7"></i>
-                </a>
-                <a href="https://www.facebook.com/people/SkyBound-Works/100064840355178/?rdid=nlpPjPURa3Wm3Puq&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14TsQs7GN26%2F" target="_blank" class="hover:text-blue-600 transition transform hover:scale-110">
-                    <i data-lucide="facebook" class="w-7 h-7"></i>
-                </a>
+                <a href="#" class="text-gray-500 hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-500 hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-500 hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
             </div>
         </div>
     </div>
 
     <script>
-        // Initialize Icons
         lucide.createIcons();
-
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const body = document.body;
 
-        // Toggle logic
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
             const isOpen = mobileMenu.classList.contains('active');
-            
-            // Icon change
             menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
             lucide.createIcons();
-
-            // Lock scroll
             body.style.overflow = isOpen ? 'hidden' : 'auto';
         });
 
-        // Auto close menu on link click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -162,63 +178,62 @@
             });
         });
     </script>
-
 </body>
 </html>
-<section id="home" class="pt-32 md:pt-44 pb-12 text-center px-6">
+<section id="home" class="pt-24 md:pt-32 pb-8 text-center px-6 max-w-7xl mx-auto">
     <div class="inline-block bg-fuchsia-600/20 text-fuchsia-400 border border-fuchsia-500/30 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-6 animate-pulse tracking-wide uppercase">
-         <span class="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-500"></span>
-            </span>
-            🔥Only 3 Spots left
-        </div>
-    <h1 class="text-5xl sm:text-7xl md:text-[90px] font-[900] mb-6 leading-[1.0] tracking-tighter">
-        Your Personal <span class="hero-gradient pr-2">Creative Engine</span> <br class="hidden md:block"> Built to Scale.
+         <span class="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-500 mr-2"></span>
+         🔥 Only 3 Spots left
+    </div>
+
+    <h1 class="text-5xl sm:text-6xl md:text-[75px] font-[900] mb-6 leading-[1.1] tracking-tighter text-white">
+        Your Personal <span class="hero-gradient pr-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-fuchsia-500">Creative Engine</span> <br class="hidden md:block"> Built to Scale.
     </h1>
     
-    <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 px-2 font-normal leading-relaxed">
-        Stop managing editors and chasing deadlines. We deliver <span class="text-fuchsia-400 font-semibold">retention-focused content</span> that turns your followers into loyal customers,delivered in 48 hours.
+    <p class="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-8 px-2 font-normal leading-relaxed">
+        Stop managing editors and chasing deadlines. We deliver <span class="text-fuchsia-400 font-semibold">retention-focused content</span> that turns your followers into loyal customers, delivered in 48 hours.
     </p>
 
-    <div class="flex flex-col items-center gap-4 mb-14">
-        <a href="https://calendly.com/sky-bound/30min" target="_blank" class="inline-block bg-gradient-to-r from-fuchsia-600 to-indigo-600 px-10 py-5 rounded-2xl font-black text-lg hover:scale-105 transition shadow-2xl shadow-purple-500/40">
+    <div class="flex flex-col items-center gap-3 mb-10">
+        <a href="https://calendly.com/sky-bound/30min" target="_blank" class="inline-block bg-gradient-to-r from-fuchsia-600 to-indigo-600 px-10 py-4 rounded-2xl font-black text-lg hover:scale-105 transition shadow-xl shadow-purple-500/30">
             GET A FREE CONTENT AUDIT &rarr;
         </a>
-        <p class="text-[12px] text-gray-500 font-medium tracking-wide uppercase">
+        <p class="text-[11px] text-gray-500 font-medium tracking-wide uppercase">
             No Commitment • 15-Min Strategy Session • 100% Free
         </p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-8 md:gap-16 border-y border-white/5 py-8 mb-12">
+    <div class="flex flex-wrap justify-center gap-8 md:gap-16 border-y border-white/5 py-5 mb-8">
         <div class="text-center">
-            <h3 class="text-3xl font-black text-white">150+</h3>
-            <p class="text-xs text-fuchsia-400 font-bold uppercase tracking-widest">Founders Served</p>
+            <h3 class="text-2xl md:text-3xl font-black text-white">150+</h3>
+            <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Founders Served</p>
         </div>
         <div class="text-center">
-            <h3 class="text-3xl font-black text-white">48h</h3>
-            <p class="text-xs text-fuchsia-400 font-bold uppercase tracking-widest">Turnaround</p>
+            <h3 class="text-2xl md:text-3xl font-black text-white">48h</h3>
+            <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Turnaround</p>
         </div>
         <div class="text-center">
-            <h3 class="text-3xl font-black text-white">95%</h3>
-            <p class="text-xs text-fuchsia-400 font-bold uppercase tracking-widest">Client Retention</p>
+            <h3 class="text-2xl md:text-3xl font-black text-white">95%</h3>
+            <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Retention</p>
         </div>
     </div>
 
     <div class="flex flex-col items-center justify-center">
-        <div class="flex items-center justify-center gap-2">
+        <div class="flex items-center justify-center gap-3">
             <div class="flex -space-x-3">
-                <img src="assets/image1.jpeg" class="w-12 h-12 rounded-full border-2 border-fuchsia-500 object-cover" alt="Client 1">
-                <img src="assets/image2.jpeg" class="w-12 h-12 rounded-full border-2 border-fuchsia-500 object-cover" alt="Client 2">
-                <img src="assets/image3.jpeg" class="w-12 h-12 rounded-full border-2 border-fuchsia-500 object-cover" alt="Client 3">
+                <img src="assets/image1.jpeg" class="w-10 h-10 rounded-full border-2 border-fuchsia-500 object-cover" alt="Client 1">
+                <img src="assets/image2.jpeg" class="w-10 h-10 rounded-full border-2 border-fuchsia-500 object-cover" alt="Client 2">
+                <img src="assets/image3.jpeg" class="w-10 h-10 rounded-full border-2 border-fuchsia-500 object-cover" alt="Client 3">
             </div>
-            <div class="flex flex-col items-start ml-3 text-left">
-                <div class="flex gap-0.5 mb-1">
-                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+            <div class="flex flex-col items-start text-left">
+                <div class="flex gap-0.5 mb-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
-                <span class="text-gray-300 text-sm font-bold tracking-tight uppercase">Trusted by 150+ Authority Brands</span>
+                <span class="text-gray-400 text-[10px] font-bold tracking-tight uppercase">Trusted by 150+ Brands</span>
             </div>
         </div>
     </div>
