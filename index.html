@@ -8,69 +8,163 @@
     <link rel="icon" type="image/png" href="assets/logo.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f0a1f; scroll-behavior: smooth; }
+        :root {
+            --bg-dark: #0f0a1f;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #f472b6 100%);
+        }
         
-        /* Premium Gradient */
+        body { 
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif; 
+            background-color: var(--bg-dark); 
+            scroll-behavior: smooth; 
+        }
+
+        /* Bold Display Styling */
+        h1, h2, .nav-logo, .nav-link-mobile { 
+            font-weight: 800; 
+            letter-spacing: -0.02em;
+        }
+        
         .hero-gradient { 
-            background: linear-gradient(to right, #38bdf8, #a855f7, #f472b6); 
+            background: var(--accent-gradient); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
 
-        /* Glassmorphism Cards */
-        .glass-card { 
-            background: rgba(26, 18, 48, 0.7); 
-            backdrop-filter: blur(10px); 
-            border: 1px solid rgba(168, 85, 247, 0.2); 
-            transition: 0.3s; 
+        /* Theme Matched Button */
+        .btn-theme {
+            background: var(--accent-gradient);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
         }
-        .glass-card:hover { transform: translateY(-5px); border-color: rgba(168, 85, 247, 0.5); }
+        .btn-theme:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5);
+            opacity: 0.9;
+        }
+
+        /* Mobile Menu Overlay */
+        #mobile-menu {
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateY(-100%);
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .nav-link-mobile {
+            font-size: 2.5rem;
+            transition: 0.3s;
+        }
+        .nav-link-mobile:hover { color: #a855f7; }
         
-        /* Logo Animation */
+        .plane-anim { animation: fly 3s ease-in-out infinite; }
         @keyframes fly { 
             0%, 100% { transform: translateY(0) rotate(0deg); } 
             50% { transform: translateY(-8px) translateX(4px) rotate(3deg); } 
         }
-        .plane-anim { animation: fly 3s ease-in-out infinite; }
-        
-        iframe { pointer-events: none; }
     </style>
 </head>
 <body class="text-white overflow-x-hidden">
 
-    <nav class="fixed top-0 w-full z-50 bg-[#0f0a1f]/90 backdrop-blur-xl px-4 md:px-6 py-3 md:py-4 border-b border-white/5">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        
-        <div class="flex items-center gap-2 md:gap-3 shrink-0">
-            <div class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center plane-anim">
-                <img src="assets/logo.png" alt="SkyBound Logo" class="w-full h-full object-contain">
-            </div>
-            <span class="text-lg md:text-2xl font-black hero-gradient tracking-tighter uppercase whitespace-nowrap">
-                SkyBound Works
-            </span>
-        </div>
-
-        <div class="hidden md:flex justify-center items-center gap-6 lg:gap-8 font-bold text-[10px] lg:text-xs uppercase tracking-[0.2em] text-gray-400">
-            <a href="#home" class="hover:text-fuchsia-400 transition-colors">Home</a>
-            <a href="#services" class="hover:text-fuchsia-400 transition-colors">Services</a>
-            <a href="#work" class="hover:text-fuchsia-400 transition-colors">Work</a>
-            <a href="#pricing" class="hover:text-fuchsia-400 transition-colors">Pricing</a>
-            <a href="#faq" class="hover:text-fuchsia-400 transition-colors">FAQ</a>
-        </div>
-
-        <div class="flex justify-end items-center gap-4 shrink-0">
-            <a href="https://calendly.com/sky-bound/30min" target="_blank" 
-               class="hidden md:inline-block bg-purple-600 px-5 lg:px-6 py-2.5 rounded-lg font-bold text-[10px] lg:text-xs uppercase tracking-widest hover:bg-purple-700 transition shadow-lg shadow-purple-500/20 active:scale-95">
-              Claim Free Audit
-            </a>
+    <nav class="fixed top-0 w-full z-[100] bg-[#0f0a1f]/80 backdrop-blur-2xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             
+            <div class="flex items-center gap-3 shrink-0">
+                <div class="w-10 h-10 plane-anim">
+                    <img src="assets/logo.png" alt="SkyBound Logo" class="w-full h-full object-contain">
+                </div>
+                <span class="text-2xl font-black hero-gradient tracking-tighter uppercase">
+                    SkyBound Works
+                </span>
+            </div>
 
+            <div class="hidden md:flex items-center gap-8 font-semibold text-[11px] uppercase tracking-[0.2em] text-gray-400">
+                <a href="#home" class="hover:text-white transition-colors">Home</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#work" class="hover:text-white transition-colors">Work</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://calendly.com/sky-bound/30min" target="_blank" 
+                   class="btn-theme hidden sm:block px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest text-white shadow-lg">
+                   Claim Free Audit
+                </a>
+                
+                <button id="menu-toggle" class="z-[110] bg-white/5 p-2.5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6 text-white"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-[#0f0a1f] z-[95] flex flex-col justify-center items-center">
+        <div class="flex flex-col items-center gap-6 text-center">
+            <a href="#home" class="nav-link-mobile">HOME</a>
+            <a href="#services" class="nav-link-mobile">SERVICES</a>
+            <a href="#work" class="nav-link-mobile">WORK</a>
+            <a href="#pricing" class="nav-link-mobile">PRICING</a>
+            <a href="#faq" class="nav-link-mobile">FAQ</a>
+            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="nav-link-mobile hero-gradient">BOOK A CALL</a>
+        </div>
+
+        <div class="mt-16 flex flex-col items-center gap-4">
+            <p class="text-gray-500 font-bold tracking-[0.4em] text-[10px] uppercase">Connect With Us</p>
+            <div class="flex gap-8">
+                <a href="https://www.instagram.com/skyboundwork?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="hover:text-fuchsia-400 transition transform hover:scale-110">
+                    <i data-lucide="instagram" class="w-7 h-7"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/112011251/admin/dashboard/" target="_blank" class="hover:text-blue-400 transition transform hover:scale-110">
+                    <i data-lucide="linkedin" class="w-7 h-7"></i>
+                </a>
+                <a href="https://www.facebook.com/people/SkyBound-Works/100064840355178/?rdid=nlpPjPURa3Wm3Puq&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14TsQs7GN26%2F" target="_blank" class="hover:text-blue-600 transition transform hover:scale-110">
+                    <i data-lucide="facebook" class="w-7 h-7"></i>
+                </a>
+            </div>
+        </div>
     </div>
-</nav>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const body = document.body;
+
+        // Toggle logic
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            const isOpen = mobileMenu.classList.contains('active');
+            
+            // Icon change
+            menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+            lucide.createIcons();
+
+            // Lock scroll
+            body.style.overflow = isOpen ? 'hidden' : 'auto';
+        });
+
+        // Auto close menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+                body.style.overflow = 'auto';
+            });
+        });
+    </script>
+
+</body>
+</html>
 <section id="home" class="pt-32 md:pt-44 pb-12 text-center px-6">
     <div class="inline-block bg-fuchsia-600/20 text-fuchsia-400 border border-fuchsia-500/30 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-6 animate-pulse tracking-wide uppercase">
          <span class="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-500"></span>
@@ -563,6 +657,5 @@
         <p class="text-gray-600 text-xs font-medium uppercase tracking-widest">© 2026. SkyBound Works. All Rights Reserved.</p>
     </div>
 </footer>
-
 
 <script>lucide.createIcons();</script>
