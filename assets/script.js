@@ -1,6 +1,6 @@
 /**
  * SkyBound Works - Interactive Scripts
- * Handles: Mobile Menu, Scroll Reveal, and Navbar Effects
+ * Handles: Scroll Reveal, and Navbar Effects
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -74,4 +74,5 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.remove('shadow-2xl', 'border-fuchsia-500/10');
         }
     });
+
 });
