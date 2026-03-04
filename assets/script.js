@@ -1,78 +1,60 @@
 /**
- * SkyBound Works - Interactive Scripts
- * Handles: Scroll Reveal, and Navbar Effects
+ * SkyBound Works - Final Script
+ * No Menu Button | Full Responsive | Smooth Scroll
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Lucide Icons
+    
+    // 1. Initialize Icons (Lucide)
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
 
-    // 2. Mobile Menu System
-    const menuBtn = document.querySelector('[data-lucide="menu"]');
-    
-    // Create Mobile Menu Overlay Dynamically
-    const mobileMenu = document.createElement('div');
-    mobileMenu.className = 'fixed inset-0 bg-[#0f0a1f] z-[60] flex flex-col items-center justify-center gap-8 text-2xl font-bold uppercase tracking-widest translate-x-full transition-transform duration-500';
-    mobileMenu.innerHTML = `
-        <div class="absolute top-6 right-6 cursor-pointer" id="close-menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </div>
-        <a href="#home" class="menu-item hover:text-fuchsia-400 transition">Home</a>
-        <a href="#services" class="menu-item hover:text-fuchsia-400 transition">Services</a>
-        <a href="#work" class="menu-item hover:text-fuchsia-400 transition">Work</a>
-        <a href="#pricing" class="menu-item hover:text-fuchsia-400 transition">Pricing</a>
-        <a href="#faq" class="menu-item hover:text-fuchsia-400 transition">FAQ</a>
-    `;
-    document.body.appendChild(mobileMenu);
-
-    // Menu Toggle Logic
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('translate-x-full');
-        });
-    }
-
-    document.getElementById('close-menu').addEventListener('click', () => {
-        mobileMenu.classList.add('translate-x-full');
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.menu-item').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('translate-x-full');
-        });
-    });
-
-    // 3. Scroll Reveal Animation Logic
-    const revealElements = () => {
+    // 2. Scroll Reveal: Elements ko scroll par zahir karna
+    const revealOnScroll = () => {
         const elements = document.querySelectorAll('section, .glass-card, .work-card');
+        
         elements.forEach(el => {
             const windowHeight = window.innerHeight;
             const elementTop = el.getBoundingClientRect().top;
-            const elementVisible = 100;
+            const revealPoint = 120; // Kitne pixels scroll par animate ho
             
-            if (elementTop < windowHeight - elementVisible) {
+            if (elementTop < windowHeight - revealPoint) {
                 el.classList.add('active');
             }
         });
     };
 
-    // Add 'reveal' class to elements on load
-    document.querySelectorAll('section').forEach(s => s.classList.add('reveal'));
-    
-    window.addEventListener('scroll', revealElements);
-    window.addEventListener('load', revealElements);
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll); // Page load hote hi check karein
 
-    // 4. Navbar Background Switch
+    // 3. Navbar Sticky Effect: Scroll par color change
     const navbar = document.querySelector('nav');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('bg-[#0f0a1f]/95', 'shadow-2xl', 'border-fuchsia-500/10');
+        if (window.scrollY > 40) {
+            // Jab user scroll karega tab shadow aur dark background aayega
+            navbar.style.background = "rgba(15, 10, 31, 0.95)";
+            navbar.style.backdropFilter = "blur(10px)";
+            navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.5)";
         } else {
-            navbar.classList.remove('shadow-2xl', 'border-fuchsia-500/10');
+            // Shuru mein navbar transparent rahega
+            navbar.style.background = "transparent";
+            navbar.style.boxShadow = "none";
         }
+    });
+
+    // 4. Smooth Scrolling: Links par click karne se page smoothly move ho
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
 
 });
