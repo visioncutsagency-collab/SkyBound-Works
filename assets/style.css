@@ -1,9 +1,11 @@
-/* SkyBound Works - Premium Stylesheet 
-   Updated: SF Pro Display Integration & Theme Matching
-*/
+/* SkyBound Works - Optimized Premium Stylesheet */
 
-/* --- Premium Fonts --- */
-@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+/* --- SF Pro Display Font Fix --- */
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('https://fonts.cdnfonts.com/css/sf-pro-display');
+    font-display: swap; /* Loading ka jhatka khatam karne ke liye */
+}
 
 /* --- Custom Scrollbar --- */
 ::-webkit-scrollbar {
@@ -13,20 +15,18 @@
     background: #0f0a1f;
 }
 ::-webkit-scrollbar-thumb {
-    /* Theme Matched Gradient */
-    background: linear-gradient(to bottom, #38bdf8, #a855f7, #f472b6);
+    background: linear-gradient(#38bdf8, #a855f7);
     border-radius: 10px;
 }
 
 /* --- Base Styles --- */
 body {
-    /* Apple-style clean font stack */
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* SF Pro Display ko default set kar diya */
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #0f0a1f;
     scroll-behavior: smooth;
     overflow-x: hidden;
     color: white;
-    -webkit-font-smoothing: antialiased;
 }
 
 /* --- Premium Gradients --- */
@@ -36,19 +36,24 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* --- Glassmorphism Cards --- */
+/* --- UI/Glassmorphism Cards (Animation Fixed) --- */
 .glass-card {
     background: rgba(26, 18, 48, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Transition ko smooth kiya */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Hover par card upar uthay ga aur glow karega */
 .glass-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: rgba(168, 85, 247, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(168, 85, 247, 0.1);
+    transform: translateY(-12px);
+    border-color: rgba(168, 85, 247, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(168, 85, 247, 0.2);
+    z-index: 10;
 }
 
 /* --- Portfolio/Work Cards --- */
@@ -57,25 +62,20 @@ body {
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.05);
     background: #161127;
-    transition: all 0.3s ease;
-    font-weight: 500; /* Regular style for card content */
+    transition: all 0.4s ease;
 }
 
-/* --- Animations --- */
-@keyframes fly {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(2deg); }
+.work-card:hover {
+    transform: scale(1.03);
+    border-color: rgba(56, 189, 248, 0.5);
 }
 
-.plane-anim {
-    animation: fly 4s ease-in-out infinite;
-}
-
-/* Scroll Reveal Classes */
+/* --- Scroll Reveal Animations --- */
+/* Jab section screen par aaye toh ye chalay ga */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1);
 }
 
 .reveal.active {
@@ -83,24 +83,27 @@ body {
     transform: translateY(0);
 }
 
-/* --- Section Title Utility (SF Pro Display Bold) --- */
-.section-title {
-    font-family: 'SF Pro Display', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 800; /* Bold setting */
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
+/* --- Airplane Animation --- */
+@keyframes fly {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
 }
 
-/* Regular Font Utility */
-.font-regular {
-    font-weight: 400;
+.plane-anim {
+    animation: fly 4s ease-in-out infinite;
+}
+
+/* --- Section Title Utility --- */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
 }
 
 @media (min-width: 768px) {
     .section-title {
-        font-size: 4rem; 
+        font-size: 4rem;
     }
 }
