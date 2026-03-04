@@ -1,43 +1,92 @@
-body { 
-    font-family: 'Inter', sans-serif; 
-    background-color: #0f0a1f; 
+/* SkyBound Works - Premium Stylesheet 
+   Contains: Glassmorphism, Animations, and Custom Scrollbar
+*/
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0f0a1f;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#38bdf8, #a855f7);
+    border-radius: 10px;
 }
 
-.hero-gradient { 
-    background: linear-gradient(to right, #f472b6, #a855f7, #6366f1); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f0a1f;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    color: white;
 }
 
-.glass-card { 
-    background: rgba(26, 18, 48, 0.7); 
-    backdrop-filter: blur(10px); 
-    border: 1px solid rgba(168, 85, 247, 0.2); 
-    transition: 0.3s; 
+/* --- Premium Gradients --- */
+.hero-gradient {
+    background: linear-gradient(to right, #38bdf8, #a855f7, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-@keyframes float { 
-    0%, 100% { transform: translateY(0) rotate(12deg); } 
-    50% { transform: translateY(-10px) rotate(15deg); } 
+/* --- Glassmorphism Cards --- */
+.glass-card {
+    background: rgba(26, 18, 48, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.plane-anim { animation: float 3s ease-in-out infinite; }
 
-.work-item { 
-    position: relative; 
-    overflow: hidden; 
-    background: #000; 
-    cursor: pointer; 
+.glass-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(168, 85, 247, 0.1);
 }
-.work-item::after { 
-    content: 'PREVIEW'; 
-    position: absolute; 
-    inset: 0; 
-    background: rgba(168, 85, 247, 0.5); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    opacity: 0; 
-    transition: 0.3s; 
-    font-weight: 900; 
+
+/* --- Portfolio/Work Cards --- */
+.work-card {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #161127;
+    transition: all 0.3s ease;
 }
-.work-item:hover::after { opacity: 1; }
+
+/* --- Animations --- */
+@keyframes fly {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.plane-anim {
+    animation: fly 4s ease-in-out infinite;
+}
+
+/* Scroll Reveal Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section Title Utility */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        font-size: 4rem;
+    }
+}
