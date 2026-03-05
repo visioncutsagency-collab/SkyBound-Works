@@ -128,7 +128,7 @@
         Claim Free Audit
     </a>
     
-    <button id="menu-toggle" class="z-[110] bg-white/5 p-2.5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+   <button id="menu-toggle" class="z-[110] bg-white/5 p-2.5 rounded-xl border border-white/10 hover:bg-white/10 transition">
         <i data-lucide="menu" id="menu-icon" class="w-6 h-6 text-white"></i>
     </button>
 </div>
@@ -145,17 +145,25 @@
         </div>
 
         <div class="absolute bottom-12 flex flex-col items-center gap-4">
-            <p class="text-gray-600 font-sf-regular tracking-[0.3em] text-[9px] uppercase">Connect With Us</p>
+            <p class="text-gray-600 font-bold tracking-[0.3em] text-[9px] uppercase">Connect With Us</p>
             <div class="flex gap-8">
-                <a href="#" class="text-gray-500 hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                <a href="#" class="text-gray-500 hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                <a href="#" class="text-gray-500 hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="https://www.instagram.com/skyboundwork" target="_blank" class="text-gray-400 hover:text-fuchsia-400 transition-all transform hover:scale-125">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/112011251" target="_blank" class="text-gray-400 hover:text-blue-400 transition-all transform hover:scale-125">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.facebook.com/people/SkyBound-Works/100064840355178/" target="_blank" class="text-gray-400 hover:text-blue-600 transition-all transform hover:scale-125">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                </a>
             </div>
         </div>
     </div>
 
     <script>
+        // Initialize Icons
         lucide.createIcons();
+        
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
@@ -164,11 +172,16 @@
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
             const isOpen = mobileMenu.classList.contains('active');
+            
+            // Icon transformation (Menu to X)
             menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
             lucide.createIcons();
+            
+            // Prevent scrolling when menu is open
             body.style.overflow = isOpen ? 'hidden' : 'auto';
         });
 
+        // Close menu when clicking any link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -178,8 +191,6 @@
             });
         });
     </script>
-</body>
-</html>
 <section id="home" class="pt-24 md:pt-32 pb-8 text-center px-6 max-w-7xl mx-auto">
     <div class="inline-block bg-fuchsia-600/20 text-fuchsia-400 border border-fuchsia-500/30 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-6 animate-pulse tracking-wide uppercase">
          <span class="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-500 mr-2"></span>
@@ -248,13 +259,17 @@
             <h3 class="text-3xl font-black hero-gradient uppercase tracking-widest inline-block pb-2">Long Form Content</h3>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="work-card aspect-video relative group reveal overflow-hidden rounded-2xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/WCiRSs708KQ?autoplay=1&mute=1&loop=1&playlist=WCiRSs708KQ&controls=0&rel=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://www.youtube.com/watch?v=WCiRSs708KQ" target="_blank" class="absolute inset-0 z-10"></a>
+            <div class="work-card aspect-video relative group reveal overflow-hidden rounded-2xl border border-white/5">
+                <iframe class="w-full h-full pointer-events-none" 
+                    src="https://www.youtube-nocookie.com/embed/WCiRSs708KQ?autoplay=1&mute=1&loop=1&playlist=WCiRSs708KQ&controls=0&modestbranding=1&rel=0&iv_load_policy=3" 
+                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://www.youtube.com/watch?v=WCiRSs708KQ" target="_blank" class="absolute inset-0 z-20 cursor-pointer"></a>
             </div>
-            <div class="work-card aspect-video relative group reveal overflow-hidden rounded-2xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/5kSEbHzUlkg?autoplay=1&mute=1&loop=1&playlist=5kSEbHzUlkg&controls=0&rel=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://www.youtube.com/watch?v=5kSEbHzUlkg" target="_blank" class="absolute inset-0 z-10"></a>
+            <div class="work-card aspect-video relative group reveal overflow-hidden rounded-2xl border border-white/5">
+                <iframe class="w-full h-full pointer-events-none" 
+                    src="https://www.youtube-nocookie.com/embed/5kSEbHzUlkg?autoplay=1&mute=1&loop=1&playlist=5kSEbHzUlkg&controls=0&modestbranding=1&rel=0&iv_load_policy=3" 
+                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://www.youtube.com/watch?v=5kSEbHzUlkg" target="_blank" class="absolute inset-0 z-20 cursor-pointer"></a>
             </div>
         </div>
     </div>
@@ -264,29 +279,41 @@
             <h3 class="text-3xl font-black hero-gradient uppercase tracking-widest inline-block pb-2">Viral Shorts & Reels</h3>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/FzICtfCIgnw?autoplay=1&mute=1&loop=1&playlist=FzICtfCIgnw&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/FzICtfCIgnw" target="_blank" class="absolute inset-0 z-10"></a>
+            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl border border-white/5">
+                <iframe class="w-full h-full pointer-events-none" 
+                    src="https://www.youtube-nocookie.com/embed/FzICtfCIgnw?autoplay=1&mute=1&loop=1&playlist=FzICtfCIgnw&controls=0&modestbranding=1" 
+                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://youtube.com/shorts/FzICtfCIgnw" target="_blank" class="absolute inset-0 z-20 cursor-pointer"></a>
             </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/nhUAxKwosLM?autoplay=1&mute=1&loop=1&playlist=nhUAxKwosLM&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/nhUAxKwosLM" target="_blank" class="absolute inset-0 z-10"></a>
+            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl border border-white/5">
+                <iframe class="w-full h-full pointer-events-none" 
+                    src="https://www.youtube-nocookie.com/embed/nhUAxKwosLM?autoplay=1&mute=1&loop=1&playlist=nhUAxKwosLM&controls=0&modestbranding=1" 
+                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://youtube.com/shorts/nhUAxKwosLM" target="_blank" class="absolute inset-0 z-20 cursor-pointer"></a>
             </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/8vqpQE1lgTE?autoplay=1&mute=1&loop=1&playlist=8vqpQE1lgTE&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/8vqpQE1lgTE" target="_blank" class="absolute inset-0 z-10"></a>
+            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl border border-white/5">
+                <iframe class="w-full h-full pointer-events-none" 
+                    src="https://www.youtube-nocookie.com/embed/8vqpQE1lgTE?autoplay=1&mute=1&loop=1&playlist=8vqpQE1lgTE&controls=0&modestbranding=1" 
+                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://youtube.com/shorts/8vqpQE1lgTE" target="_blank" class="absolute inset-0 z-20 cursor-pointer"></a>
             </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/Z6mdQqZDXQU?autoplay=1&mute=1&loop=1&playlist=Z6mdQqZDXQU&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/Z6mdQqZDXQU" target="_blank" class="absolute inset-0 z-10"></a>
+            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl border border-white/5">
+                <iframe class="w-full h-full pointer-events-none" 
+                    src="https://www.youtube-nocookie.com/embed/Z6mdQqZDXQU?autoplay=1&mute=1&loop=1&playlist=Z6mdQqZDXQU&controls=0&modestbranding=1" 
+                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://youtube.com/shorts/Z6mdQqZDXQU" target="_blank" class="absolute inset-0 z-20 cursor-pointer"></a>
             </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/WrGQxJCvODM?autoplay=1&mute=1&loop=1&playlist=WrGQxJCvODM&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/WrGQxJCvODM" target="_blank" class="absolute inset-0 z-10"></a>
+            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl border border-white/5">
+                <iframe class="w-full h-full pointer-events-none" 
+                    src="https://www.youtube-nocookie.com/embed/WrGQxJCvODM?autoplay=1&mute=1&loop=1&playlist=WrGQxJCvODM&controls=0&modestbranding=1" 
+                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://youtube.com/shorts/WrGQxJCvODM" target="_blank" class="absolute inset-0 z-20 cursor-pointer"></a>
             </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/GAI2W_qis_s?autoplay=1&mute=1&loop=1&playlist=GAI2W_qis_s&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/GAI2W_qis_s" target="_blank" class="absolute inset-0 z-10"></a>
+            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl border border-white/5">
+                <iframe class="w-full h-full pointer-events-none" 
+                    src="https://www.youtube-nocookie.com/embed/GAI2W_qis_s?autoplay=1&mute=1&loop=1&playlist=GAI2W_qis_s&controls=0&modestbranding=1" 
+                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://youtube.com/shorts/GAI2W_qis_s" target="_blank" class="absolute inset-0 z-20 cursor-pointer"></a>
             </div>
         </div>
     </div>
@@ -309,7 +336,6 @@
                     <label for="thumb1" class="absolute top-10 right-10 text-white text-4xl cursor-pointer z-20">×</label>
                 </div>
             </div>
-
             <div class="relative reveal">
                 <label for="thumb2" class="cursor-pointer">
                     <div class="work-card aspect-video overflow-hidden rounded-xl border border-white/10">
@@ -323,7 +349,6 @@
                     <label for="thumb2" class="absolute top-10 right-10 text-white text-4xl cursor-pointer z-20">×</label>
                 </div>
             </div>
-
             <div class="relative reveal">
                 <label for="thumb3" class="cursor-pointer">
                     <div class="work-card aspect-video overflow-hidden rounded-xl border border-white/10">
