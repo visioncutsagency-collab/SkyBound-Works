@@ -19,20 +19,10 @@
         
         body { 
             font-family: 'SF Pro Display', sans-serif; 
+            font-weight: 400;
             background-color: var(--bg-dark); 
             scroll-behavior: smooth; 
-        }
-
-        /* Headlines ke liye bold style barkarar rakha hai */
-        h1, h2, .nav-logo { 
-            font-weight: 800; 
-            letter-spacing: -0.02em;
-        }
-        
-        /* Regular Font Class (SF Pro Display Regular) */
-        .font-sf-regular {
-            font-family: 'SF Pro Display', sans-serif;
-            font-weight: 400; /* Regular weight */
+            overflow-x: hidden;
         }
 
         .hero-gradient { 
@@ -43,33 +33,26 @@
 
         .btn-theme {
             background: var(--accent-gradient);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .btn-theme:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 20px rgba(126, 34, 206, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid rgba(244, 114, 182, 0.4); 
+            box-shadow: 0 0 15px rgba(190, 24, 93, 0.2);
         }
 
         #mobile-menu {
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateY(-100%);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
         }
         #mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
             transform: translateY(0);
         }
 
-        .nav-link-mobile {
-            font-family: 'SF Pro Display', sans-serif;
-            font-size: 1.1rem; /* Phone ke liye perfect size */
-            font-weight: 400;   /* Pure Regular */
-            letter-spacing: 0.02em;
-            transition: 0.2s;
-            color: #cbd5e1;
-        }
-        .nav-link-mobile:hover { color: #ffffff; }
-        
         .plane-anim { animation: fly 3s ease-in-out infinite; }
         @keyframes fly { 
             0%, 100% { transform: translateY(0) rotate(0deg); } 
@@ -77,144 +60,132 @@
         }
     </style>
 </head>
-<body class="text-white overflow-x-hidden">
+<body class="text-white">
 
-    <nav class="fixed top-0 w-full z-[100] bg-[#0f0a1f]/90 backdrop-blur-2xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            
-            <div class="flex items-center gap-3 shrink-0">
-                <div class="w-10 h-10 plane-anim">
-                    <img src="assets/logo.png" alt="SkyBound Logo" class="w-full h-full object-contain">
+ <nav class="fixed top-0 w-full z-[100] bg-[#0f0a1f]/90 backdrop-blur-2xl border-b border-white/5" style="font-family: 'SF Pro Display', sans-serif;">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-3 flex justify-between items-center relative">
+        
+        <div class="flex items-center gap-3 shrink-0">
+            <div class="w-10 h-10 md:w-12 md:h-12 plane-anim">
+                <img src="assets/logo.png" alt="SkyBound Logo" class="w-full h-full object-contain">
+            </div>
+            <span class="inline-block text-xl md:text-2xl font-black tracking-tighter uppercase whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6] px-2 py-1">
+                SkyBound Works
+            </span>
+        </div> 
+
+        <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-[13px] tracking-widest text-gray-300 uppercase font-bold">
+            <a href="#home" class="hover:text-[#38BDF8] transition-colors">Home</a>
+            <a href="#services" class="hover:text-[#A855F7] transition-colors">Services</a>
+            <a href="#work" class="hover:text-[#F472B6] transition-colors">Work</a>
+            <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+            <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="https://calendly.com/sky-bound/30min" target="_blank" 
+               class="hidden lg:flex group items-center justify-between gap-4 pl-6 pr-1 py-1 rounded-full bg-white transition-all duration-300 active:scale-95 shadow-lg">
+                <span class="text-[12px] text-black uppercase font-bold tracking-tight">Contact</span>
+                <div class="relative w-8 h-8 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all duration-500 group-hover:bg-gradient-to-tr group-hover:from-[#38BDF8] group-hover:via-[#A855F7] group-hover:to-[#F472B6]">
+                    <i data-lucide="arrow-right" class="w-4 h-4 stroke-[3]"></i>
                 </div>
-                <span class="text-2xl font-black hero-gradient tracking-tighter uppercase">
-                    SkyBound Works
-                </span>
+            </a>
+            
+            <button id="menu-toggle" class="lg:hidden bg-white/5 p-2 rounded-xl border border-white/10 text-white active:scale-90 transition-transform">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-0 bg-[#0f0a1f] z-[95] flex flex-col justify-center items-center px-6" style="font-family: 'SF Pro Display', sans-serif;">
+    <div class="flex flex-col items-center gap-8 text-center mb-12">
+        <a href="#home" class="mobile-link text-4xl font-black tracking-tighter uppercase text-white hover:text-[#38BDF8]">Home</a>
+        <a href="#services" class="mobile-link text-4xl font-black tracking-tighter uppercase text-white hover:text-[#A855F7]">Services</a>
+        <a href="#work" class="mobile-link text-4xl font-black tracking-tighter uppercase text-white hover:text-[#F472B6]">Work</a>
+        
+        <a href="https://calendly.com/sky-bound/30min" target="_blank" 
+           class="mt-4 flex items-center justify-between gap-5 pl-8 pr-2 py-2 rounded-full bg-white w-fit active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all">
+            <span class="text-sm text-black uppercase font-black tracking-widest">Book a Call</span>
+            <div class="bg-[#0f0a1f] text-white w-10 h-10 flex items-center justify-center rounded-full">
+                <i data-lucide="phone" class="w-4 h-4"></i>
             </div>
+        </a>
+    </div>
 
-            <div class="hidden md:flex items-center gap-8 font-sf-regular text-[12px] uppercase tracking-[0.15em] text-gray-400">
-                <a href="#home" class="hover:text-white transition-colors">Home</a>
-                <a href="#services" class="hover:text-white transition-colors">Services</a>
-                <a href="#work" class="hover:text-white transition-colors">Work</a>
-                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
-                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-            </div>
-
-    <style>
-    .btn-theme {
-        /* Gradient ko dark aur refined kiya taake corners saaf lagein */
-        background: linear-gradient(135deg, #0284c7 0%, #7e22ce 50%, #be185d 100%);
-        background-origin: border-box; /* Gradient ko border ke andar lock karta hai */
-        
-        /* Overflow hidden un dots ko cut kar dega */
-        overflow: hidden; 
-        position: relative;
-        z-index: 1;
-        
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        
-        /* Shadow ko soft kiya taake corners par pressure na paray */
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    }
-
-    .btn-theme:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 8px 25px rgba(126, 34, 206, 0.3);
-    }
-</style>
-<div class="flex items-center gap-2 md:gap-3"> 
-    <a href="https://calendly.com/sky-bound/30min" target="_blank" 
-       class="btn-theme hidden sm:block px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-[0.15em] text-white">
-        Claim Free Audit
-    </a>
-    
-   <button id="menu-toggle" class="z-[110] bg-white/5 p-2.5 rounded-xl border border-white/10 hover:bg-white/10 transition">
-        <i data-lucide="menu" id="menu-icon" class="w-6 h-6 text-white"></i>
-    </button>
+    <div class="flex flex-col items-center gap-6 border-t border-white/10 pt-10 w-full max-w-[280px]">
+        <span class="text-gray-500 text-[10px] uppercase tracking-[0.5em] font-black">Connect</span>
+        <div class="flex gap-10">
+            <a href="https://www.facebook.com/people/SkyBound-Works/100064840355178/" target="_blank" class="text-white hover:text-[#38BDF8] transform hover:scale-125 transition-all">
+                <i data-lucide="facebook" class="w-7 h-7"></i>
+            </a>
+            <a href="https://www.instagram.com/skyboundwork" target="_blank" class="text-white hover:text-[#A855F7] transform hover:scale-125 transition-all">
+                <i data-lucide="instagram" class="w-7 h-7"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/112011251" target="_blank" class="text-white hover:text-[#F472B6] transform hover:scale-125 transition-all">
+                <i data-lucide="linkedin" class="w-7 h-7"></i>
+            </a>
+        </div>
+    </div>
 </div>
-    </nav>
-
-    <div id="mobile-menu" class="fixed inset-0 bg-[#0f0a1f] z-[95] flex flex-col justify-center items-center">
-        <div class="flex flex-col items-center gap-7 text-center">
-            <a href="#home" class="nav-link-mobile">Home</a>
-            <a href="#services" class="nav-link-mobile">Services</a>
-            <a href="#work" class="nav-link-mobile">Work</a>
-            <a href="#pricing" class="nav-link-mobile">Pricing</a>
-            <a href="#faq" class="nav-link-mobile">FAQ</a>
-            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="nav-link-mobile text-white font-semibold border-t border-white/10 pt-5 mt-2">Book a Call</a>
-        </div>
-
-        <div class="absolute bottom-12 flex flex-col items-center gap-4">
-            <p class="text-gray-600 font-bold tracking-[0.3em] text-[9px] uppercase">Connect With Us</p>
-            <div class="flex gap-8">
-                <a href="https://www.instagram.com/skyboundwork" target="_blank" class="text-gray-400 hover:text-fuchsia-400 transition-all transform hover:scale-125">
-                    <i data-lucide="instagram" class="w-6 h-6"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/112011251" target="_blank" class="text-gray-400 hover:text-blue-400 transition-all transform hover:scale-125">
-                    <i data-lucide="linkedin" class="w-6 h-6"></i>
-                </a>
-                <a href="https://www.facebook.com/people/SkyBound-Works/100064840355178/" target="_blank" class="text-gray-400 hover:text-blue-600 transition-all transform hover:scale-125">
-                    <i data-lucide="facebook" class="w-6 h-6"></i>
-                </a>
-            </div>
-        </div>
+ <section id="home" class="pt-32 md:pt-40 pb-10 text-center px-4 max-w-7xl mx-auto flex flex-col items-center">
+    <div class="mb-3 w-full overflow-hidden">
+        <h1 class="text-[42px] sm:text-8xl md:text-[120px] font-[900] leading-none tracking-tighter text-white uppercase whitespace-nowrap">
+            Built to <span class="bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6] bg-clip-text text-transparent">Scale</span>
+        </h1>
     </div>
-
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
-        
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const body = document.body;
-
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            const isOpen = mobileMenu.classList.contains('active');
-            
-            // Icon transformation (Menu to X)
-            menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
-            lucide.createIcons();
-            
-            // Prevent scrolling when menu is open
-            body.style.overflow = isOpen ? 'hidden' : 'auto';
-        });
-
-        // Close menu when clicking any link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                menuIcon.setAttribute('data-lucide', 'menu');
-                lucide.createIcons();
-                body.style.overflow = 'auto';
-            });
-        });
-    </script>
-<section id="home" class="pt-24 md:pt-32 pb-8 text-center px-6 max-w-7xl mx-auto">
-    <div class="inline-block bg-fuchsia-600/20 text-fuchsia-400 border border-fuchsia-500/30 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-6 animate-pulse tracking-wide uppercase">
-         <span class="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-500 mr-2"></span>
-         🔥 Only 3 Spots left
-    </div>
-
-    <h1 class="text-5xl sm:text-6xl md:text-[75px] font-[900] mb-6 leading-[1.1] tracking-tighter text-white">
-        Your Personal <span class="hero-gradient pr-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-fuchsia-500">Creative Engine</span> <br class="hidden md:block"> Built to Scale.
-    </h1>
     
-    <p class="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-8 px-2 font-normal leading-relaxed">
-        Stop managing editors and chasing deadlines. We deliver <span class="text-fuchsia-400 font-semibold">retention-focused content</span> that turns your followers into loyal customers, delivered in 48 hours.
+    <p class="text-[17px] md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10 font-bold tracking-tight leading-tight px-4">
+        High-retention content for 
+        <span class="bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6] bg-clip-text text-transparent">founders</span> 
+        and 
+        <span class="bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6] bg-clip-text text-transparent">personal brands</span>
     </p>
 
-    <div class="flex flex-col items-center gap-3 mb-10">
-        <a href="https://calendly.com/sky-bound/30min" target="_blank" class="inline-block bg-gradient-to-r from-fuchsia-600 to-indigo-600 px-10 py-4 rounded-2xl font-black text-lg hover:scale-105 transition shadow-xl shadow-purple-500/30">
-            GET A FREE CONTENT AUDIT &rarr;
-        </a>
-        <p class="text-[11px] text-gray-500 font-medium tracking-wide uppercase">
-            No Commitment • 15-Min Strategy Session • 100% Free
-        </p>
-    </div>
+<style>
+    /* Gradient default invisible, hover par fade-in */
+    .expandable-circle::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, #38bdf8, #a855f7, #f472b6); /* Aapka exact gradient */
+        opacity: 0; /* Default chupa hua */
+        transition: opacity 0.3s ease; /* Smooth transition */
+        z-index: 1; /* Arrow ke neeche */
+    }
 
-    <div class="flex flex-wrap justify-center gap-8 md:gap-16 border-y border-white/5 py-5 mb-8">
+    /* Jab button hover ho, tab circle expand aur gradient fade-in ho */
+    .group:hover .expandable-circle::before {
+        opacity: 1; /* Gradient visible */
+    }
+</style>
+
+<div class="flex flex-col items-center gap-5 mb-12 w-full px-4">
+    <a href="https://calendly.com/sky-bound/30min" target="_blank" 
+       class="group flex items-center justify-between gap-4 pl-6 pr-1.5 py-1.5 rounded-full w-full max-w-[340px] sm:w-auto bg-white transition-transform duration-300 active:scale-95 shadow-xl shadow-white/5">
+        
+        <span class="font-bold text-[15px] md:text-lg text-[#0f0a1f] sf-font uppercase tracking-tight">
+            Get a Free Content Audit
+        </span>
+        
+        <div class="expandable-circle relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all duration-300 ease-out group-hover:scale-110 group-active:scale-125 overflow-hidden">
+            
+            <i data-lucide="arrow-right" class="relative z-10 w-5 h-5 md:w-6 md:h-6 stroke-[2.5] transform group-hover:translate-x-0.5 transition-transform"></i>
+        </div>
+    </a> 
+    
+    <p class="text-[9px] md:text-[11px] text-gray-400 font-[800] uppercase tracking-[0.2em] flex items-center gap-2 sf-font">
+        <span>No Commitment</span> <span class="text-fuchsia-600">•</span> 
+        <span>15-Min Strategy</span> <span class="text-fuchsia-600">•</span> 
+        <span>100% Free</span>
+    </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-16 border-y border-white/5 py-5 mb-8">
         <div class="text-center">
             <h3 class="text-2xl md:text-3xl font-black text-white">150+</h3>
             <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Founders Served</p>
@@ -228,7 +199,6 @@
             <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Retention</p>
         </div>
     </div>
-
     <div class="flex flex-col items-center justify-center">
         <div class="flex items-center justify-center gap-3">
             <div class="flex -space-x-3">
@@ -249,103 +219,133 @@
         </div>
     </div>
 </section>
-<section id="work" class="max-w-7xl mx-auto px-6 py-10">
+<style>
+    /* SF Pro Display Font Import */
+    @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+    
+    .sf-font {
+        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Animation for cards */
+    .work-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .work-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+    }
+</style>
+<section id="work" class="max-w-7xl mx-auto px-6 py-10 overflow-visible">
     <div class="text-center mb-12 reveal">
-        <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter">OUR WORK</h2>
+        <h2 class="text-5xl md:text-7xl uppercase tracking-tight text-white inline-block px-4 py-4 leading-[1.2]" 
+            style="font-family: 'SF Pro Display Bold', sans-serif; font-weight: 700;">
+            OUR 
+            <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6] px-2">
+                WORK
+            </span>
+        </h2>
+    </div>
+    <div class="mb-20">
+        <div class="text-center mb-10">
+            <h3 class="text-3xl font-[900] uppercase tracking-widest inline-block pb-1 text-white">
+                Long Form <span class="hero-gradient">Content</span>
+            </h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+            <div class="work-card aspect-video relative group overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40 hover:border-fuchsia-500/30 transition-all duration-500">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/WCiRSs708KQ?mute=1&loop=1&playlist=WCiRSs708KQ&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://www.youtube.com/watch?v=WCiRSs708KQ" target="_blank" class="absolute inset-0 z-10 cursor-pointer"></a>
+            </div>
+            <div class="work-card aspect-video relative group overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40 hover:border-fuchsia-500/30 transition-all duration-500">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/5kSEbHzUlkg?mute=1&loop=1&playlist=5kSEbHzUlkg&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                <a href="https://www.youtube.com/watch?v=5kSEbHzUlkg" target="_blank" class="absolute inset-0 z-10 cursor-pointer"></a>
+            </div>
+        </div>
     </div>
 
-    <div class="mb-16">
-        <div class="text-center mb-8 reveal">
-            <h3 class="text-3xl font-black hero-gradient uppercase tracking-widest inline-block pb-2">Long Form Content</h3>
+    <div class="mb-20">
+        <div class="text-center mb-10">
+            <h3 class="text-3xl font-[900] uppercase tracking-widest inline-block pb-1 text-white">
+                <span class="hero-gradient">Viral</span> Shorts & Reels
+            </h3>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="work-card aspect-video relative group reveal overflow-hidden rounded-2xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/WCiRSs708KQ?autoplay=1&mute=1&loop=1&playlist=WCiRSs708KQ&controls=0&rel=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://www.youtube.com/watch?v=WCiRSs708KQ" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-            <div class="work-card aspect-video relative group reveal overflow-hidden rounded-2xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/5kSEbHzUlkg?autoplay=1&mute=1&loop=1&playlist=5kSEbHzUlkg&controls=0&rel=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://www.youtube.com/watch?v=5kSEbHzUlkg" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="mb-16">
-        <div class="text-center mb-8 reveal">
-            <h3 class="text-3xl font-black hero-gradient uppercase tracking-widest inline-block pb-2">Viral Shorts & Reels</h3>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/FzICtfCIgnw?autoplay=1&mute=1&loop=1&playlist=FzICtfCIgnw&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/FzICtfCIgnw" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/nhUAxKwosLM?autoplay=1&mute=1&loop=1&playlist=nhUAxKwosLM&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/nhUAxKwosLM" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/8vqpQE1lgTE?autoplay=1&mute=1&loop=1&playlist=8vqpQE1lgTE&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/8vqpQE1lgTE" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/Z6mdQqZDXQU?autoplay=1&mute=1&loop=1&playlist=Z6mdQqZDXQU&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 md:gap-6">
+            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+                <iframe class="w-full h-full pointer-events-none" 
+                    src="https://www.youtube.com/embed/Z6mdQqZDXQU?autoplay=1&mute=1&loop=1&playlist=Z6mdQqZDXQU&controls=0&modestbranding=1" 
+                    loading="lazy" frameborder="0" allow="autoplay; encrypted-media"></iframe>
                 <a href="https://youtube.com/shorts/Z6mdQqZDXQU" target="_blank" class="absolute inset-0 z-10"></a>
             </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/WrGQxJCvODM?autoplay=1&mute=1&loop=1&playlist=WrGQxJCvODM&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/WrGQxJCvODM" target="_blank" class="absolute inset-0 z-10"></a>
+            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/FzICtfCIgnw?autoplay=1&mute=1&loop=1&playlist=FzICtfCIgnw&controls=0" loading="lazy" frameborder="0"></iframe>
+                <a href="https://youtube.com/shorts/FzICtfCIgnw" target="_blank" class="absolute inset-0 z-10"></a>
             </div>
-            <div class="work-card aspect-[9/16] relative group reveal overflow-hidden rounded-xl">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/GAI2W_qis_s?autoplay=1&mute=1&loop=1&playlist=GAI2W_qis_s&controls=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/nhUAxKwosLM?autoplay=1&mute=1&loop=1&playlist=nhUAxKwosLM&controls=0" loading="lazy" frameborder="0"></iframe>
+                <a href="https://youtube.com/shorts/nhUAxKwosLM" target="_blank" class="absolute inset-0 z-10"></a>
+            </div>
+            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/GAI2W_qis_s?autoplay=1&mute=1&loop=1&playlist=GAI2W_qis_s&controls=0" loading="lazy" frameborder="0"></iframe>
                 <a href="https://youtube.com/shorts/GAI2W_qis_s" target="_blank" class="absolute inset-0 z-10"></a>
+            </div>
+            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/8vqpQE1lgTE?autoplay=1&mute=1&loop=1&playlist=8vqpQE1lgTE&controls=0" loading="lazy" frameborder="0"></iframe>
+                <a href="https://youtube.com/shorts/8vqpQE1lgTE" target="_blank" class="absolute inset-0 z-10"></a>
+            </div>
+            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/WrGQxJCvODM?autoplay=1&mute=1&loop=1&playlist=WrGQxJCvODM&controls=0" loading="lazy" frameborder="0"></iframe>
+                <a href="https://youtube.com/shorts/WrGQxJCvODM" target="_blank" class="absolute inset-0 z-10"></a>
             </div>
         </div>
     </div>
 
-    <div class="pb-10">
-        <div class="text-center mb-8 reveal">
-            <h3 class="text-3xl font-black hero-gradient uppercase tracking-widest inline-block pb-2">High-CTR Thumbnails</h3>
+    <div class="mt-20">
+        <div class="text-center mb-10">
+            <h3 class="text-3xl font-[900] uppercase tracking-widest inline-block pb-1 text-white">
+                High-CTR <span class="hero-gradient">Thumbnails</span>
+            </h3>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="relative reveal">
-                <label for="thumb1" class="cursor-pointer">
-                    <div class="work-card aspect-video overflow-hidden rounded-xl border border-white/10">
-                        <img src="assets/thumbnail3.jpg" loading="lazy" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-2">
+            <div class="relative group">
+                <label for="t1" class="cursor-pointer">
+                    <div class="work-card aspect-video overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40 transition-all duration-500 hover:border-fuchsia-500/50">
+                        <img src="assets/thumbnail3.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Thumbnail 1">
                     </div>
                 </label>
-                <input type="checkbox" id="thumb1" class="hidden peer">
-                <div class="fixed inset-0 z-[100] hidden peer-checked:flex items-center justify-center bg-black/90 p-4">
-                    <label for="thumb1" class="absolute inset-0 cursor-zoom-out"></label>
-                    <img src="assets/thumbnail3.jpg" class="max-w-[90%] max-h-[90%] rounded-lg shadow-2xl relative z-10 border border-white/20">
-                    <label for="thumb1" class="absolute top-10 right-10 text-white text-4xl cursor-pointer z-20">×</label>
+                <input type="checkbox" id="t1" class="hidden peer">
+                <div class="fixed inset-0 z-[200] hidden peer-checked:flex items-center justify-center bg-black/95 p-4 backdrop-blur-md">
+                    <label for="t1" class="absolute inset-0 cursor-zoom-out"></label>
+                    <img src="assets/thumbnail3.jpg" class="max-w-full md:max-w-[85%] max-h-[85vh] rounded-2xl shadow-2xl relative z-10 border border-white/10">
+                    <label for="t1" class="absolute top-8 right-8 text-white/50 hover:text-white text-5xl cursor-pointer z-20">×</label>
                 </div>
             </div>
-
-            <div class="relative reveal">
-                <label for="thumb2" class="cursor-pointer">
-                    <div class="work-card aspect-video overflow-hidden rounded-xl border border-white/10">
-                        <img src="assets/thumbnail2.jpg" loading="lazy" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+            <div class="relative group">
+                <label for="t2" class="cursor-pointer">
+                    <div class="work-card aspect-video overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40 transition-all duration-500 hover:border-fuchsia-500/50">
+                        <img src="assets/thumbnail2.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Thumbnail 2">
                     </div>
                 </label>
-                <input type="checkbox" id="thumb2" class="hidden peer">
-                <div class="fixed inset-0 z-[100] hidden peer-checked:flex items-center justify-center bg-black/90 p-4">
-                    <label for="thumb2" class="absolute inset-0 cursor-zoom-out"></label>
-                    <img src="assets/thumbnail2.jpg" class="max-w-[90%] max-h-[90%] rounded-lg shadow-2xl relative z-10 border border-white/20">
-                    <label for="thumb2" class="absolute top-10 right-10 text-white text-4xl cursor-pointer z-20">×</label>
+                <input type="checkbox" id="t2" class="hidden peer">
+                <div class="fixed inset-0 z-[200] hidden peer-checked:flex items-center justify-center bg-black/95 p-4 backdrop-blur-md">
+                    <label for="t2" class="absolute inset-0 cursor-zoom-out"></label>
+                    <img src="assets/thumbnail2.jpg" class="max-w-full md:max-w-[85%] max-h-[85vh] rounded-2xl shadow-2xl relative z-10 border border-white/10">
+                    <label for="t2" class="absolute top-8 right-8 text-white/50 hover:text-white text-5xl cursor-pointer z-20">×</label>
                 </div>
             </div>
-
-            <div class="relative reveal">
-                <label for="thumb3" class="cursor-pointer">
-                    <div class="work-card aspect-video overflow-hidden rounded-xl border border-white/10">
-                        <img src="assets/thumbnail1.jpg" loading="lazy" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+            <div class="relative group">
+                <label for="t3" class="cursor-pointer">
+                    <div class="work-card aspect-video overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40 transition-all duration-500 hover:border-fuchsia-500/50">
+                        <img src="assets/thumbnail1.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Thumbnail 3">
                     </div>
                 </label>
-                <input type="checkbox" id="thumb3" class="hidden peer">
-                <div class="fixed inset-0 z-[100] hidden peer-checked:flex items-center justify-center bg-black/90 p-4">
-                    <label for="thumb3" class="absolute inset-0 cursor-zoom-out"></label>
-                    <img src="assets/thumbnail1.jpg" class="max-w-[90%] max-h-[90%] rounded-lg shadow-2xl relative z-10 border border-white/20">
-                    <label for="thumb3" class="absolute top-10 right-10 text-white text-4xl cursor-pointer z-20">×</label>
+                <input type="checkbox" id="t3" class="hidden peer">
+                <div class="fixed inset-0 z-[200] hidden peer-checked:flex items-center justify-center bg-black/95 p-4 backdrop-blur-md">
+                    <label for="t3" class="absolute inset-0 cursor-zoom-out"></label>
+                    <img src="assets/thumbnail1.jpg" class="max-w-full md:max-w-[85%] max-h-[85vh] rounded-2xl shadow-2xl relative z-10 border border-white/10">
+                    <label for="t3" class="absolute top-8 right-8 text-white/50 hover:text-white text-5xl cursor-pointer z-20">×</label>
                 </div>
             </div>
         </div>
@@ -409,7 +409,6 @@
         </div>
     </div>
 </section>
-
 <section id="pricing" class="py-14 px-6 bg-[#0f0a1f]">
     <div class="text-center mb-10 reveal">
         <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-4 text-white">
@@ -597,40 +596,54 @@
         </div>
     </div>
 </section>
-
+<style>
+  @font-face {
+    font-family: 'SF Pro Display Bold';
+    src: url('https://db.onlinewebfonts.com/t/20e36353d7e780517565b3d6874a7a8a.woff2') format('woff2');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'SF Pro Display Regular';
+    src: url('https://db.onlinewebfonts.com/t/b25ef350f968e7b9e787494f6c4069f2.woff2') format('woff2');
+    font-weight: 400;
+  }
+</style>
 <section id="book-call" class="py-10 px-6 relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-fuchsia-600/10 blur-[100px] -z-10 animate-pulse"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#38BDF8]/10 blur-[100px] -z-10 animate-pulse"></div>
 
-    <div class="max-w-4xl mx-auto glass-card rounded-[2.5rem] p-10 md:p-14 text-center relative border border-white/10 shadow-2xl reveal cursor-pointer transition-all duration-700 hover:scale-[1.02] active:scale-[0.98] hover:border-fuchsia-500/30 group">
+    <div class="max-w-4xl mx-auto glass-card rounded-[2.5rem] p-10 md:p-14 text-center relative border border-white/10 shadow-2xl transition-all duration-700 hover:scale-[1.01] hover:border-[#38BDF8]/20 group">
         
-        <div class="inline-flex items-center gap-2 bg-fuchsia-600/20 text-fuchsia-400 border border-fuchsia-500/30 px-4 py-1.5 rounded-full text-[10px] font-black mb-6 uppercase tracking-widest transition-transform group-hover:scale-110">
-            <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-fuchsia-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-500"></span>
-            </span>
-            🔥 Only 3 Spots left
-        </div>
-
-        <h2 class="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter text-white leading-[1.1] group-hover:translate-y-[-5px] transition-transform duration-500">
-            Ready to <span class="hero-gradient">Dominate</span> <br> Your Industry?
+        <h2 class="text-3xl md:text-5xl uppercase tracking-tighter text-white leading-[1.1] transition-transform duration-500" 
+            style="font-family: 'SF Pro Display Bold', sans-serif; font-weight: 700;">
+            Ready to <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6]">Dominate</span> <br> Your Industry?
         </h2>
         
-        <p class="text-md md:text-lg text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed group-hover:text-gray-300 transition-colors">
-            Stop letting editing hold back your brand. Join 150+ founders who have automated their growth with SkyBound.
+        <p class="text-md md:text-lg text-gray-400 mb-10 mt-4 max-w-xl mx-auto leading-relaxed group-hover:text-gray-300 transition-colors" 
+           style="font-family: 'SF Pro Display Regular', sans-serif;">
+            Stop letting editing hold back your brand. Join 150+ founders who have automated their growth with SkyBounds Works.
         </p>
         
-        <div class="flex flex-col items-center gap-6">
-            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="group relative inline-block bg-gradient-to-r from-fuchsia-600 to-indigo-600 px-10 py-5 rounded-xl font-black text-md md:text-lg hover:scale-105 active:scale-95 transition-all shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:shadow-[0_0_60px_rgba(168,85,247,0.5)] uppercase tracking-tight overflow-hidden">
-                <span class="relative z-10 text-white">Claim Your Strategy Session</span>
-                <div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-[-20deg]"></div>
+        <div class="flex flex-col items-center gap-8">
+            <a href="https://calendly.com/sky-bound/30min" target="_blank" 
+               class="group/btn w-full sm:w-auto inline-flex items-center justify-between gap-6 md:gap-12 pl-8 md:pl-10 pr-1.5 py-1.5 rounded-full bg-white transition-all duration-300 shadow-xl active:scale-95 border border-transparent hover:shadow-[0_0_40px_rgba(56,189,248,0.2)]">
+                
+                <span class="text-sm md:text-lg text-black uppercase tracking-tight" 
+                      style="font-family: 'SF Pro Display Regular', sans-serif; font-weight: 500;">
+                    Claim Your Strategy Session
+                </span>
+                
+                <div class="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all duration-500 group-hover/btn:scale-110 group-hover/btn:bg-gradient-to-tr group-hover/btn:from-[#38BDF8] group-hover/btn:via-[#A855F7] group-hover/btn:to-[#F472B6] shadow-lg">
+                    <i data-lucide="arrow-right" class="w-5 h-5 md:w-6 md:h-6 stroke-[3] transform group-hover/btn:translate-x-1 transition-transform"></i>
+                </div>
             </a>
 
-            <div class="flex flex-wrap justify-center gap-4 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-                <span class="flex items-center gap-1.5 group-hover:text-fuchsia-400 transition-colors"><i data-lucide="clock" class="w-3 h-3"></i> 15-Min Intro</span>
+            <div class="flex flex-wrap justify-center gap-4 text-[10px] font-bold text-gray-500 uppercase tracking-widest"
+                 style="font-family: 'SF Pro Display Bold', sans-serif;">
+                <span class="flex items-center gap-1.5 group-hover:text-[#38BDF8] transition-colors"><i data-lucide="clock" class="w-3 h-3"></i> 15-Min Intro</span>
                 <span class="text-gray-700 hidden md:block">•</span>
-                <span class="flex items-center gap-1.5 group-hover:text-indigo-400 transition-colors"><i data-lucide="shield-check" class="w-3 h-3"></i> No Obligation</span>
+                <span class="flex items-center gap-1.5 group-hover:text-white transition-colors"><i data-lucide="shield-check" class="w-3 h-3"></i> No Obligation</span>
                 <span class="text-gray-700 hidden md:block">•</span>
-                <span class="flex items-center gap-1.5 group-hover:text-fuchsia-400 transition-colors"><i data-lucide="zap" class="w-3 h-3"></i> 100% Free</span>
+                <span class="flex items-center gap-1.5 group-hover:text-[#A855F7] transition-colors"><i data-lucide="zap" class="w-3 h-3"></i> 100% Free</span>
             </div>
         </div>
     </div>
