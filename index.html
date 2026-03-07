@@ -14,43 +14,37 @@
     <style>
         :root {
             --bg-dark: #0f0a1f;
-            --accent-gradient: linear-gradient(135deg, #0284c7 0%, #7e22ce 50%, #be185d 100%);
         }
         
         body { 
-            font-family: 'SF Pro Display', sans-serif; 
+            font-family: 'SF Pro Display', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial';
             font-weight: 400;
             background-color: var(--bg-dark); 
             scroll-behavior: smooth; 
             overflow-x: hidden;
         }
 
+        /* HERO GRADIENT CLASS */
         .hero-gradient { 
             background: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #f472b6 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
 
-        .btn-theme {
-            background: var(--accent-gradient);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 1.5px solid rgba(244, 114, 182, 0.4); 
-            box-shadow: 0 0 15px rgba(190, 24, 93, 0.2);
-        }
-
+        /* Mobile Menu Transitions */
         #mobile-menu {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
             visibility: hidden;
             transform: translateY(-20px);
+            pointer-events: none;
         }
+
         #mobile-menu.active {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+            pointer-events: auto;
         }
 
         .plane-anim { animation: fly 3s ease-in-out infinite; }
@@ -62,7 +56,7 @@
 </head>
 <body class="text-white">
 
- <nav class="fixed top-0 w-full z-[100] bg-[#0f0a1f]/90 backdrop-blur-2xl border-b border-white/5" style="font-family: 'SF Pro Display', sans-serif;">
+<nav class="fixed top-0 w-full z-[100] bg-[#0f0a1f]/90 backdrop-blur-2xl border-b border-white/5">
     <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-3 flex justify-between items-center relative">
         
         <div class="flex items-center gap-3 shrink-0">
@@ -74,64 +68,98 @@
             </span>
         </div> 
 
-        <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-[13px] tracking-widest text-gray-300 uppercase font-bold">
-            <a href="#home" class="hover:text-[#38BDF8] transition-colors">Home</a>
-            <a href="#services" class="hover:text-[#A855F7] transition-colors">Services</a>
-            <a href="#work" class="hover:text-[#F472B6] transition-colors">Work</a>
-            <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
-            <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+        <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-[13px] tracking-[0.2em] uppercase font-bold text-white">
+            <a href="#home" class="hover:opacity-60 transition-opacity duration-300">Home</a>
+            <a href="#services" class="hover:opacity-60 transition-opacity duration-300">Services</a>
+            <a href="#work" class="hover:opacity-60 transition-opacity duration-300">Work</a>
+            <a href="#pricing" class="hover:opacity-60 transition-opacity duration-300">Pricing</a>
+            <a href="#faq" class="hover:opacity-60 transition-opacity duration-300">FAQ</a>
         </div>
 
         <div class="flex items-center gap-4">
             <a href="https://calendly.com/sky-bound/30min" target="_blank" 
-               class="hidden lg:flex group items-center justify-between gap-4 pl-6 pr-1 py-1 rounded-full bg-white transition-all duration-300 active:scale-95 shadow-lg">
-                <span class="text-[12px] text-black uppercase font-bold tracking-tight">Contact</span>
-                <div class="relative w-8 h-8 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all duration-500 group-hover:bg-gradient-to-tr group-hover:from-[#38BDF8] group-hover:via-[#A855F7] group-hover:to-[#F472B6]">
-                    <i data-lucide="arrow-right" class="w-4 h-4 stroke-[3]"></i>
+               class="hidden lg:flex group items-center justify-between gap-4 pl-5 pr-1 py-1 rounded-full bg-white transition-all duration-300 active:scale-95 shadow-lg">
+                <span class="text-[10px] text-black font-normal tracking-wider uppercase">Contact</span>
+                <div class="relative w-7 h-7 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all duration-500 group-hover:bg-gradient-to-tr group-hover:from-[#38BDF8] group-hover:via-[#A855F7] group-hover:to-[#F472B6]">
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
                 </div>
             </a>
             
-            <button id="menu-toggle" class="lg:hidden bg-white/5 p-2 rounded-xl border border-white/10 text-white active:scale-90 transition-transform">
-                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="4" y1="12" x2="20" y2="12"></line>
-                    <line x1="4" y1="6" x2="20" y2="6"></line>
-                    <line x1="4" y1="18" x2="20" y2="18"></line>
-                </svg>
+            <button id="menu-toggle" class="lg:hidden bg-white/5 p-2 rounded-xl border border-white/10 text-white relative z-[110] active:scale-90 transition-transform">
+                <div id="menu-icon-container">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </div>
             </button>
         </div>
     </div>
 </nav>
 
-<div id="mobile-menu" class="fixed inset-0 bg-[#0f0a1f] z-[95] flex flex-col justify-center items-center px-6" style="font-family: 'SF Pro Display', sans-serif;">
+<div id="mobile-menu" class="fixed inset-0 bg-[#0f0a1f] z-[95] flex flex-col justify-center items-center px-6">
     <div class="flex flex-col items-center gap-8 text-center mb-12">
-        <a href="#home" class="mobile-link text-4xl font-black tracking-tighter uppercase text-white hover:text-[#38BDF8]">Home</a>
-        <a href="#services" class="mobile-link text-4xl font-black tracking-tighter uppercase text-white hover:text-[#A855F7]">Services</a>
-        <a href="#work" class="mobile-link text-4xl font-black tracking-tighter uppercase text-white hover:text-[#F472B6]">Work</a>
+        
+<a href="#home" class="mobile-link text-2xl font-regular tracking-tight uppercase text-white hover:opacity-60 transition-opacity">Home</a>
+        <a href="#services" class="mobile-link text-2xl font-regular tracking-tight uppercase text-white hover:opacity-60 transition-opacity">Services</a>
+        <a href="#pricing" class="mobile-link text-2xl font-regular tracking-tight uppercase text-white hover:opacity-60 transition-opacity">Pricing</a>
+        <a href="#work" class="mobile-link text-2xl font-regular tracking-tight uppercase text-white hover:opacity-60 transition-opacity">Work</a>
+        <a href="#faq" class="mobile-link text-2xl font-regular tracking-tight uppercase text-white hover:opacity-60 transition-opacity">FAQ</a>
         
         <a href="https://calendly.com/sky-bound/30min" target="_blank" 
-           class="mt-4 flex items-center justify-between gap-5 pl-8 pr-2 py-2 rounded-full bg-white w-fit active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all">
-            <span class="text-sm text-black uppercase font-black tracking-widest">Book a Call</span>
-            <div class="bg-[#0f0a1f] text-white w-10 h-10 flex items-center justify-center rounded-full">
-                <i data-lucide="phone" class="w-4 h-4"></i>
+           class="mobile-link mt-6 flex items-center justify-between gap-4 pl-6 pr-1.5 py-1.5 rounded-full bg-white w-fit shadow-xl active:scale-95 transition-transform">
+            <span class="text-[11px] text-black font-normal tracking-[0.1em] uppercase">Book a Call</span>
+            <div class="bg-[#0f0a1f] text-white w-8 h-8 flex items-center justify-center rounded-full">
+                <i data-lucide="phone" class="w-3.5 h-3.5"></i>
             </div>
         </a>
     </div>
 
     <div class="flex flex-col items-center gap-6 border-t border-white/10 pt-10 w-full max-w-[280px]">
-        <span class="text-gray-500 text-[10px] uppercase tracking-[0.5em] font-black">Connect</span>
+        <span class="text-gray-500 text-[10px] uppercase tracking-[0.5em] font-black">Connect with us</span>
         <div class="flex gap-10">
-            <a href="https://www.facebook.com/people/SkyBound-Works/100064840355178/" target="_blank" class="text-white hover:text-[#38BDF8] transform hover:scale-125 transition-all">
+            <a href="https://www.facebook.com/people/SkyBound-Works/100064840355178/" class="text-white hover:text-[#38BDF8] transition-all duration-300">
                 <i data-lucide="facebook" class="w-7 h-7"></i>
             </a>
-            <a href="https://www.instagram.com/skyboundwork" target="_blank" class="text-white hover:text-[#A855F7] transform hover:scale-125 transition-all">
+            <a href="https://www.instagram.com/skyboundwork" class="text-white hover:text-[#A855F7] transition-all duration-300">
                 <i data-lucide="instagram" class="w-7 h-7"></i>
             </a>
-            <a href="https://www.linkedin.com/company/112011251" target="_blank" class="text-white hover:text-[#F472B6] transform hover:scale-125 transition-all">
+            <a href="https://www.linkedin.com/company/112011251" class="text-white hover:text-[#F472B6] transition-all duration-300">
                 <i data-lucide="linkedin" class="w-7 h-7"></i>
             </a>
         </div>
     </div>
 </div>
+
+<script>
+    lucide.createIcons();
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconContainer = document.getElementById('menu-icon-container');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    menuToggle.addEventListener('click', () => {
+        const isActive = mobileMenu.classList.toggle('active');
+        if (isActive) {
+            menuIconContainer.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+            document.body.style.overflow = 'hidden';
+        } else {
+            menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            document.body.style.overflow = '';
+        }
+        lucide.createIcons(); 
+    });
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            document.body.style.overflow = '';
+            lucide.createIcons();
+        });
+    });
+</script>
+
+</body>
+</html>
  <section id="home" class="pt-32 md:pt-40 pb-10 text-center px-4 max-w-7xl mx-auto flex flex-col items-center">
     <div class="mb-3 w-full overflow-hidden">
         <h1 class="text-[42px] sm:text-8xl md:text-[120px] font-[900] leading-none tracking-tighter text-white uppercase whitespace-nowrap">
@@ -409,60 +437,67 @@
         </div>
     </div>
 </section>
-<section id="pricing" class="py-14 px-6 bg-[#0f0a1f]">
-    <div class="text-center mb-10 reveal">
-        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-4 text-white">
+<section id="pricing" class="pt-10 pb-20 px-6 bg-[#0f0a1f]">
+    <div class="text-center mb-16 reveal">
+        <h2 class="text-4xl md:text-6xl uppercase tracking-tight mb-4 text-white px-6" 
+            style="font-family: 'SF Pro Display', sans-serif; font-weight: 800;">
             Engagement 
-            <span class="hero-gradient">Models</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6]">Models</span>
         </h2>
     </div>
 
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass-card p-8 md:p-10 rounded-[2.5rem] flex flex-col border border-white/5 reveal cursor-pointer transition-all duration-500 hover:scale-105 active:scale-95 hover:border-fuchsia-500/30 group" style="transition-delay: 100ms;">
-            <h3 class="text-fuchsia-500 font-black text-2xl mb-4 uppercase">Starter</h3>
-            <p class="text-gray-400 text-sm mb-8 leading-relaxed">Consistent content designed for steady growth.</p>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        
+        <div class="glass-card p-8 md:p-10 rounded-[2.5rem] flex flex-col border border-white/20 reveal cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:border-[#38BDF8]/60 hover:shadow-[0_0_30px_rgba(56,189,248,0.2)] group relative overflow-hidden" style="transition-delay: 100ms;">
+            <h3 class="text-[#38BDF8] font-bold text-2xl mb-2 uppercase tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">Starter</h3>
+            <p class="text-gray-400 text-sm mb-4 leading-relaxed" style="font-family: 'SF Pro Display', sans-serif; font-weight: 400;">Consistent content designed for steady growth.</p>
+            <p class="text-[11px] uppercase tracking-[0.2em] text-gray-400 mb-6" style="font-family: 'SF Pro Display', sans-serif; font-weight: 600;">What You Get</p>
+
             <div class="mb-8 flex-grow">
-                <ul class="space-y-4 text-sm text-gray-300">
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="check" class="w-5 h-5 text-fuchsia-500"></i> Professional editing for high retention</li>
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="check" class="w-5 h-5 text-fuchsia-500"></i> Structured captions for better flow</li>
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="check" class="w-5 h-5 text-fuchsia-500"></i> Strategic revisions for refined quality</li>
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="check" class="w-5 h-5 text-fuchsia-500"></i> Fast turnaround for consistent posting</li>
+                <ul class="space-y-4 text-sm text-gray-300" style="font-family: 'SF Pro Display', sans-serif; font-weight: 400;">
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="check" class="w-5 h-5 text-[#38BDF8] shrink-0"></i> Professional editing for high retention</li>
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="check" class="w-5 h-5 text-[#38BDF8] shrink-0"></i> Structured captions for better flow</li>
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="check" class="w-5 h-5 text-[#38BDF8] shrink-0"></i> Strategic revisions for refined quality</li>
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="check" class="w-5 h-5 text-[#38BDF8] shrink-0"></i> Fast turnaround for consistent posting</li>
                 </ul>
             </div>
-            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="w-full py-4 text-center border border-fuchsia-500/30 rounded-xl font-bold hover:bg-fuchsia-500 hover:text-white transition-all transform hover:-translate-y-1 uppercase text-xs">Get Started</a>
+            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="w-full py-4 text-center border border-[#38BDF8]/30 rounded-xl font-bold hover:bg-[#38BDF8] hover:text-black transition-all transform uppercase text-xs tracking-widest">Get Started</a>
         </div>
 
-        <div class="glass-card p-8 md:p-10 rounded-[2.5rem] border-fuchsia-500 border-2 scale-100 md:scale-105 bg-[#1a1235] relative z-10 flex flex-col shadow-2xl shadow-fuchsia-500/20 my-6 md:my-0 reveal cursor-pointer transition-all duration-500 hover:scale-[1.1] active:scale-100 group" style="transition-delay: 200ms;">
-            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-fuchsia-500 text-white text-[10px] font-black px-4 py-1 rounded-full uppercase animate-bounce">Most Popular</div>
-            <h3 class="text-white font-black text-2xl mb-4 uppercase">Growth</h3>
-            <p class="text-gray-300 text-sm mb-8 leading-relaxed">Elevated visuals designed for stronger impact.</p>
+        <div class="glass-card p-8 md:p-10 rounded-[2.5rem] border-fuchsia-500/60 border-2 scale-100 md:scale-110 bg-[#1a1235] relative z-20 flex flex-col shadow-2xl shadow-fuchsia-500/30 my-6 md:my-0 reveal cursor-pointer transition-all duration-500 hover:scale-[1.12] hover:border-fuchsia-400 group" style="transition-delay: 200ms;">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-fuchsia-500 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest animate-bounce">Most Popular</div>
+            <h3 class="text-fuchsia-400 font-bold text-2xl mb-2 uppercase tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">Growth</h3>
+            <p class="text-gray-300 text-sm mb-4 leading-relaxed" style="font-family: 'SF Pro Display', sans-serif; font-weight: 400;">Elevated visuals designed for stronger impact.</p>
+            <p class="text-[11px] uppercase tracking-[0.2em] text-fuchsia-400 mb-6" style="font-family: 'SF Pro Display', sans-serif; font-weight: 600;">What You Get</p>
+
             <div class="mb-8 flex-grow">
-                <ul class="space-y-4 text-sm text-gray-200">
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="zap" class="w-5 h-5 text-fuchsia-400"></i> Advanced editing for premium visuals</li>
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="zap" class="w-5 h-5 text-fuchsia-400"></i> Motion graphics for seamless transitions</li>
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="zap" class="w-5 h-5 text-fuchsia-400"></i> Color grading for strong brand presence</li>
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="zap" class="w-5 h-5 text-fuchsia-400"></i> Detailed polishing for superior output</li>
+                <ul class="space-y-4 text-sm text-gray-200" style="font-family: 'SF Pro Display', sans-serif; font-weight: 400;">
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="zap" class="w-5 h-5 text-fuchsia-400 shrink-0"></i> Advanced editing for premium visuals</li>
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="zap" class="w-5 h-5 text-fuchsia-400 shrink-0"></i> Motion graphics for seamless transitions</li>
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="zap" class="w-5 h-5 text-fuchsia-400 shrink-0"></i> Color grading for strong brand presence</li>
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="zap" class="w-5 h-5 text-fuchsia-400 shrink-0"></i> Detailed polishing for superior output</li>
                 </ul>
             </div>
-            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="w-full py-4 text-center bg-fuchsia-600 text-white rounded-xl font-black hover:bg-fuchsia-700 shadow-lg shadow-fuchsia-500/40 transition-all transform hover:-translate-y-1 uppercase text-xs">Get Started</a>
+            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="w-full py-4 text-center bg-fuchsia-600 text-white rounded-xl font-bold hover:bg-fuchsia-700 shadow-lg shadow-fuchsia-500/40 transition-all transform uppercase text-xs tracking-widest">Get Started</a>
         </div>
 
-        <div class="glass-card p-8 md:p-10 rounded-[2.5rem] flex flex-col border border-white/5 reveal cursor-pointer transition-all duration-500 hover:scale-105 active:scale-95 hover:border-indigo-500/30 group" style="transition-delay: 300ms;">
-            <h3 class="text-indigo-400 font-black text-2xl mb-4 uppercase">Pro</h3>
-            <p class="text-gray-400 text-sm mb-8 leading-relaxed">Content engineered for measurable growth.</p>
+        <div class="glass-card p-8 md:p-10 rounded-[2.5rem] flex flex-col border border-white/20 reveal cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:border-indigo-500/70 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)] group relative overflow-hidden" style="transition-delay: 300ms;">
+            <h3 class="text-indigo-400 font-bold text-2xl mb-2 uppercase tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">Pro</h3>
+            <p class="text-gray-400 text-sm mb-4 leading-relaxed" style="font-family: 'SF Pro Display', sans-serif; font-weight: 400;">Content engineered for measurable growth.</p>
+            <p class="text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-6" style="font-family: 'SF Pro Display', sans-serif; font-weight: 600;">What You Get</p>
+
             <div class="mb-8 flex-grow">
-                <ul class="space-y-4 text-sm text-gray-300">
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="trending-up" class="w-5 h-5 text-indigo-400"></i> A/B hook testing variations</li>
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="trending-up" class="w-5 h-5 text-indigo-400"></i> Performance-focused edit structure</li>
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="trending-up" class="w-5 h-5 text-indigo-400"></i> Posting support included</li>
-                    <li class="flex gap-3 group-hover:translate-x-2 transition-transform duration-300"><i data-lucide="trending-up" class="w-5 h-5 text-indigo-400"></i> Custom content strategy</li>
+                <ul class="space-y-4 text-sm text-gray-300" style="font-family: 'SF Pro Display', sans-serif; font-weight: 400;">
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="trending-up" class="w-5 h-5 text-indigo-400 shrink-0"></i> A/B hook testing variations</li>
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="trending-up" class="w-5 h-5 text-indigo-400 shrink-0"></i> Performance-focused edit structure</li>
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="trending-up" class="w-5 h-5 text-indigo-400 shrink-0"></i> Posting support included</li>
+                    <li class="flex gap-3 transition-colors duration-300 group-hover:text-white"><i data-lucide="trending-up" class="w-5 h-5 text-indigo-400 shrink-0"></i> Custom content strategy</li>
                 </ul>
             </div>
-            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="w-full py-4 text-center border border-indigo-500/30 rounded-xl font-bold hover:bg-indigo-500 hover:text-white transition-all transform hover:-translate-y-1 uppercase text-xs">Get Started</a>
+            <a href="https://calendly.com/sky-bound/30min" target="_blank" class="w-full py-4 text-center border border-indigo-500/30 rounded-xl font-bold hover:bg-indigo-500 hover:text-white transition-all transform uppercase text-xs tracking-widest">Get Started</a>
         </div>
     </div>
 </section>
-
 <section id="testimonials" class="py-14 px-6 bg-[#130b25]/50">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-10 reveal">
@@ -608,42 +643,42 @@
     font-weight: 400;
   }
 </style>
-<section id="book-call" class="py-10 px-6 relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#38BDF8]/10 blur-[100px] -z-10 animate-pulse"></div>
+<section id="book-call" class="py-16 px-6 relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] bg-fuchsia-600/10 blur-[120px] -z-10 animate-pulse"></div>
 
-    <div class="max-w-4xl mx-auto glass-card rounded-[2.5rem] p-10 md:p-14 text-center relative border border-white/10 shadow-2xl transition-all duration-700 hover:scale-[1.01] hover:border-[#38BDF8]/20 group">
+    <div class="max-w-4xl mx-auto glass-card rounded-[2.5rem] p-10 md:p-14 text-center relative border border-white/5 shadow-2xl transition-all duration-700 hover:scale-[1.01] hover:border-fuchsia-500/20 group">
         
-        <h2 class="text-3xl md:text-5xl uppercase tracking-tighter text-white leading-[1.1] transition-transform duration-500" 
-            style="font-family: 'SF Pro Display Bold', sans-serif; font-weight: 700;">
+        <h2 class="text-4xl md:text-6xl uppercase tracking-tighter text-white leading-[1.05] mb-6" 
+            style="font-family: 'SF Pro Display', sans-serif; font-weight: 700;">
             Ready to <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6]">Dominate</span> <br> Your Industry?
         </h2>
         
-        <p class="text-md md:text-lg text-gray-400 mb-10 mt-4 max-w-xl mx-auto leading-relaxed group-hover:text-gray-300 transition-colors" 
-           style="font-family: 'SF Pro Display Regular', sans-serif;">
-            Stop letting editing hold back your brand. Join 150+ founders who have automated their growth with SkyBounds Works.
+        <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed tracking-tight group-hover:text-gray-200 transition-colors"
+           style="font-family: 'SF Pro Display', sans-serif; font-weight: 400;">
+            Stop letting editing hold back your brand. Join 150+ founders who have automated their growth with SkyBound Works.
         </p>
         
         <div class="flex flex-col items-center gap-8">
             <a href="https://calendly.com/sky-bound/30min" target="_blank" 
-               class="group/btn w-full sm:w-auto inline-flex items-center justify-between gap-6 md:gap-12 pl-8 md:pl-10 pr-1.5 py-1.5 rounded-full bg-white transition-all duration-300 shadow-xl active:scale-95 border border-transparent hover:shadow-[0_0_40px_rgba(56,189,248,0.2)]">
+               class="group/btn w-full sm:w-auto inline-flex items-center justify-between gap-8 pl-8 pr-1.5 py-1.5 rounded-full bg-white transition-all duration-300 active:scale-95 shadow-xl hover:shadow-[0_0_30px_rgba(56,189,248,0.2)]">
                 
-                <span class="text-sm md:text-lg text-black uppercase tracking-tight" 
-                      style="font-family: 'SF Pro Display Regular', sans-serif; font-weight: 500;">
+                <span class="text-[15px] md:text-lg text-black uppercase tracking-tight"
+                      style="font-family: 'SF Pro Display', sans-serif; font-weight: 600;">
                     Claim Your Strategy Session
                 </span>
                 
-                <div class="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all duration-500 group-hover/btn:scale-110 group-hover/btn:bg-gradient-to-tr group-hover/btn:from-[#38BDF8] group-hover/btn:via-[#A855F7] group-hover/btn:to-[#F472B6] shadow-lg">
+                <div class="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all duration-500 group-hover/btn:scale-110 group-hover/btn:bg-gradient-to-tr group-hover/btn:from-[#38BDF8] group-hover/btn:via-[#A855F7] group-hover/btn:to-[#F472B6]">
                     <i data-lucide="arrow-right" class="w-5 h-5 md:w-6 md:h-6 stroke-[3] transform group-hover/btn:translate-x-1 transition-transform"></i>
                 </div>
             </a>
 
-            <div class="flex flex-wrap justify-center gap-4 text-[10px] font-bold text-gray-500 uppercase tracking-widest"
-                 style="font-family: 'SF Pro Display Bold', sans-serif;">
-                <span class="flex items-center gap-1.5 group-hover:text-[#38BDF8] transition-colors"><i data-lucide="clock" class="w-3 h-3"></i> 15-Min Intro</span>
-                <span class="text-gray-700 hidden md:block">•</span>
-                <span class="flex items-center gap-1.5 group-hover:text-white transition-colors"><i data-lucide="shield-check" class="w-3 h-3"></i> No Obligation</span>
-                <span class="text-gray-700 hidden md:block">•</span>
-                <span class="flex items-center gap-1.5 group-hover:text-[#A855F7] transition-colors"><i data-lucide="zap" class="w-3 h-3"></i> 100% Free</span>
+            <div class="flex flex-wrap justify-center gap-4 text-[10px] text-gray-500 uppercase tracking-[0.2em]"
+                 style="font-family: 'SF Pro Display', sans-serif; font-weight: 700;">
+                <span class="flex items-center gap-1.5 group-hover:text-[#38BDF8] transition-colors"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 15-Min Intro</span>
+                <span class="text-fuchsia-600 hidden md:block">•</span>
+                <span class="flex items-center gap-1.5 group-hover:text-white transition-colors"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> No Obligation</span>
+                <span class="text-fuchsia-600 hidden md:block">•</span>
+                <span class="flex items-center gap-1.5 group-hover:text-[#A855F7] transition-colors"><i data-lucide="zap" class="w-3.5 h-3.5"></i> 100% Free</span>
             </div>
         </div>
     </div>
