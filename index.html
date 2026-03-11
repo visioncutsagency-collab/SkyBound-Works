@@ -242,25 +242,33 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const target = +entry.target.getAttribute("data-target");
+                    
                     const countIt = () => {
                         const current = +entry.target.innerText;
-                        const increment = target / 50; // Speed control (jitna bada number, utna slow animation)
+                        
+                        // Fast Speed: target ko 12 se divide kiya (jitna chota number, utni fast animation)
+                        const increment = Math.ceil(target / 12); 
 
                         if (current < target) {
-                            entry.target.innerText = Math.ceil(current + increment);
-                            setTimeout(countIt, 30); // 30ms smoothness
+                            const nextValue = current + increment;
+                            // Ensure ke target se agay na nikal jaye
+                            entry.target.innerText = nextValue > target ? target : nextValue;
+                            
+                            // Super Fast: 15ms ka gap
+                            setTimeout(countIt, 15); 
                         } else {
                             entry.target.innerText = target;
                         }
                     };
+                    
                     countIt();
-                    observer.unobserve(entry.target); // Ek baar animate hone ke baad stop kar dega
+                    observer.unobserve(entry.target); 
                 }
             });
         };
 
         const observerOptions = {
-            threshold: 0.5 // Jab 50% section dikhega tab animation start hogi
+            threshold: 0.2 // Thora sa dikhte hi start ho jaye
         };
 
         const observer = new IntersectionObserver(animateNumbers, observerOptions);
