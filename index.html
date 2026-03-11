@@ -174,144 +174,111 @@
         <span class="bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6] bg-clip-text text-transparent">personal brands</span>
     </p>
 
+    <div class="flex flex-col items-center gap-5 mb-12 w-full px-4">
+        <a href="https://calendly.com/sky-bound/30min" target="_blank" 
+           class="group flex items-center justify-between gap-4 pl-6 pr-1.5 py-1.5 rounded-full w-full max-w-[340px] sm:w-auto bg-white active:scale-95 shadow-xl shadow-white/5 transition-transform duration-150">
+            
+            <span class="font-bold text-[15px] md:text-lg text-[#0f0a1f] sf-font tracking-tight">
+                Get a Free Content Audit
+            </span>
+            
+            <div class="expandable-circle relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white overflow-hidden transition-transform duration-150 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" class="relative z-20 w-5 h-5 md:w-6 md:h-6 transition-transform duration-150 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </div>
+        </a> 
+        
+        <p class="text-[9px] md:text-[11px] text-gray-400 font-[800] tracking-[0.2em] flex items-center gap-2 sf-font uppercase">
+            <span>No Commitment</span> <span class="text-fuchsia-600">•</span> 
+            <span>15-Min Strategy</span> <span class="text-fuchsia-600">•</span> 
+            <span>100% Free</span>
+        </p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-8 md:gap-16 border-y border-white/5 py-5 mb-8 w-full">
+        <div class="text-center">
+            <h3 class="text-2xl md:text-3xl font-black text-white"><span class="stat-number" data-target="150">0</span>+</h3>
+            <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Founders Served</p>
+        </div>
+        <div class="text-center">
+            <h3 class="text-2xl md:text-3xl font-black text-white"><span class="stat-number" data-target="48">0</span>h</h3>
+            <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Turnaround</p>
+        </div>
+        <div class="text-center">
+            <h3 class="text-2xl md:text-3xl font-black text-white"><span class="stat-number" data-target="95">0</span>%</h3>
+            <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Retention</p>
+        </div>
+    </div>
+
+    <div class="flex items-center justify-center gap-3">
+        <div class="flex -space-x-3">
+            <img src="assets/image1.jpeg" class="w-10 h-10 rounded-full border-2 border-fuchsia-500 object-cover">
+            <img src="assets/image2.jpeg" class="w-10 h-10 rounded-full border-2 border-fuchsia-500 object-cover">
+            <img src="assets/image3.jpeg" class="w-10 h-10 rounded-full border-2 border-fuchsia-500 object-cover">
+        </div>
+        <div class="flex flex-col items-start text-left">
+            <div class="flex gap-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span class="text-gray-400 text-[10px] font-bold tracking-tight uppercase">Trusted by 150+ Brands</span>
+        </div>
+    </div>
+</section>
+
 <style>
-    /* Gradient default invisible, hover par fade-in */
+    @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+    .sf-font { font-family: 'SF Pro Display', sans-serif; }
+
+    /* Instant Glow without delay */
     .expandable-circle::before {
         content: '';
         position: absolute;
         inset: 0;
         border-radius: 9999px;
-        background: linear-gradient(135deg, #38bdf8, #a855f7, #f472b6); /* Aapka exact gradient */
-        opacity: 0; /* Default chupa hua */
-        transition: opacity 0.3s ease; /* Smooth transition */
-        z-index: 1; /* Arrow ke neeche */
+        background: linear-gradient(135deg, #38bdf8, #a855f7, #f472b6);
+        opacity: 0;
+        z-index: 1;
+        /* No transition for instant reveal */
     }
 
-    /* Jab button hover ho, tab circle expand aur gradient fade-in ho */
     .group:hover .expandable-circle::before {
-        opacity: 1; /* Gradient visible */
+        opacity: 1;
     }
 </style>
-
-<div class="flex flex-col items-center gap-5 mb-12 w-full px-4">
-    <a href="https://calendly.com/sky-bound/30min" target="_blank" 
-       class="group flex items-center justify-between gap-4 pl-6 pr-1.5 py-1.5 rounded-full w-full max-w-[340px] sm:w-auto bg-white transition-transform duration-300 active:scale-95 shadow-xl shadow-white/5">
-        
-        <span class="font-bold text-[15px] md:text-lg text-[#0f0a1f] sf-font tracking-tight">
-            Get a Free Content Audit
-        </span>
-        
-        <div class="expandable-circle relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all duration-300 ease-out group-hover:scale-110 group-active:scale-125 overflow-hidden">
-            
-            <i data-lucide="arrow-right" class="relative z-10 w-5 h-5 md:w-6 md:h-6 stroke-[2.5] transform group-hover:translate-x-0.5 transition-transform"></i>
-        </div>
-    </a> 
-    
-    <p class="text-[9px] md:text-[11px] text-gray-400 font-[800] tracking-[0.2em] flex items-center gap-2 sf-font">
-        <span>No Commitment</span> <span class="text-fuchsia-600">•</span> 
-        <span>15-Min Strategy</span> <span class="text-fuchsia-600">•</span> 
-        <span>100% Free</span>
-    </p>
-</div>
-<div class="flex flex-wrap justify-center gap-8 md:gap-16 border-y border-white/5 py-5 mb-8">
-    <div class="text-center">
-        <h3 class="text-2xl md:text-3xl font-black text-white">
-            <span class="stat-number" data-target="150">0</span>+
-        </h3>
-        <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Founders Served</p>
-    </div>
-    <div class="text-center">
-        <h3 class="text-2xl md:text-3xl font-black text-white">
-            <span class="stat-number" data-target="48">0</span>h
-        </h3>
-        <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Turnaround</p>
-    </div>
-    <div class="text-center">
-        <h3 class="text-2xl md:text-3xl font-black text-white">
-            <span class="stat-number" data-target="95">0</span>%
-        </h3>
-        <p class="text-[9px] md:text-[10px] text-fuchsia-400 font-bold uppercase tracking-widest">Retention</p>
-    </div>
-</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const stats = document.querySelectorAll(".stat-number");
-        
         const animateNumbers = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const target = +entry.target.getAttribute("data-target");
-                    
                     const countIt = () => {
                         const current = +entry.target.innerText;
-                        
-                        // Fast Speed: target ko 12 se divide kiya (jitna chota number, utni fast animation)
                         const increment = Math.ceil(target / 12); 
-
                         if (current < target) {
                             const nextValue = current + increment;
-                            // Ensure ke target se agay na nikal jaye
                             entry.target.innerText = nextValue > target ? target : nextValue;
-                            
-                            // Super Fast: 15ms ka gap
                             setTimeout(countIt, 15); 
                         } else {
                             entry.target.innerText = target;
                         }
                     };
-                    
                     countIt();
                     observer.unobserve(entry.target); 
                 }
             });
         };
-
-        const observerOptions = {
-            threshold: 0.2 // Thora sa dikhte hi start ho jaye
-        };
-
-        const observer = new IntersectionObserver(animateNumbers, observerOptions);
+        const observer = new IntersectionObserver(animateNumbers, { threshold: 0.2 });
         stats.forEach(stat => observer.observe(stat));
     });
 </script>
-    <div class="flex flex-col items-center justify-center">
-        <div class="flex items-center justify-center gap-3">
-            <div class="flex -space-x-3">
-                <img src="assets/image1.jpeg" class="w-10 h-10 rounded-full border-2 border-fuchsia-500 object-cover" alt="Client 1">
-                <img src="assets/image2.jpeg" class="w-10 h-10 rounded-full border-2 border-fuchsia-500 object-cover" alt="Client 2">
-                <img src="assets/image3.jpeg" class="w-10 h-10 rounded-full border-2 border-fuchsia-500 object-cover" alt="Client 3">
-            </div>
-            <div class="flex flex-col items-start text-left">
-                <div class="flex gap-0.5 mb-0.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                </div>
-                <span class="text-gray-400 text-[10px] font-bold tracking-tight uppercase">Trusted by 150+ Brands</span>
-            </div>
-        </div>
-    </div>
-</section>
-<style>
-    /* SF Pro Display Font Import */
-    @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
-    
-    .sf-font {
-        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    /* Animation for cards */
-    .work-card {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .work-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
-    }
-</style>
 <section id="work" class="max-w-7xl mx-auto px-6 py-10 overflow-visible">
      <div class="max-w-7xl mx-auto">
     <div class="text-center mb-10 reveal"> 
