@@ -92,67 +92,47 @@
     </div>
 </div>
 
-<section id="home" class="relative min-h-screen flex items-center pt-24 md:pt-32 pb-16 px-4 md:px-6 max-w-[1440px] mx-auto">
+<section id="home" class="relative min-h-screen flex items-center pt-20 md:pt-32 pb-16 px-4 md:px-6 max-w-[1440px] mx-auto">
     <div class="grid grid-cols-12 gap-2 md:gap-8 items-center w-full z-10">
         
         <div class="col-span-7 flex flex-col items-start text-left lg:pl-12">
-            <h1 class="text-[28px] sm:text-7xl md:text-8xl lg:text-[95px] font-black mb-4 md:mb-6 uppercase tracking-[-0.06em] leading-[0.85]">
+            <h1 class="text-[28px] sm:text-7xl md:text-8xl lg:text-[95px] font-black mb-2 md:mb-6 uppercase tracking-[-0.06em] leading-[0.85]">
                 Stop being <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#F472B6]">invisible</span>
                 <br>online
             </h1>
-            <p class="text-[11px] md:text-xl text-gray-400 max-w-[180px] md:max-w-lg mb-6 md:mb-10 font-medium">
+            <p class="text-[11px] md:text-xl text-gray-400 max-w-[180px] md:max-w-lg mb-4 md:mb-10 font-medium">
                 You built something real. <span class="text-white">We make sure the world sees it</span> through high-retention content systems.
             </p>
-            <div class="flex flex-col items-start gap-4 md:gap-5">
+            
+            <div class="flex flex-col items-start gap-3 md:gap-5">
                 <a href="https://calendly.com/sky-bound/30min" target="_blank" 
-                   class="group flex items-center justify-between gap-10 pl-10 pr-2 py-2.5 rounded-full bg-white shadow-xl active:scale-95 transition-all w-fit">
-                    <span class="font-bold text-[15px] md:text-lg text-black uppercase">Get a Free Audit</span>
-                    <div class="w-11 h-11 md:w-13 md:h-13 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all group-hover:bg-gradient-to-br group-hover:from-[#38BDF8] group-hover:via-[#A855F7] group-hover:to-[#F472B6]">
-                        <i data-lucide="arrow-right" class="w-6 h-6 md:w-7 md:h-7"></i>
+                   class="group flex items-center justify-between gap-4 md:gap-10 pl-5 md:pl-10 pr-1.5 py-1.5 md:py-2.5 rounded-full bg-white shadow-xl active:scale-95 transition-all w-fit">
+                    <span class="font-bold text-[12px] md:text-lg text-black uppercase">Get a Free Audit</span>
+                    
+                    <div class="w-8 h-8 md:w-13 md:h-13 flex items-center justify-center rounded-full bg-[#0f0a1f] text-white transition-all group-hover:bg-gradient-to-br group-hover:from-[#38BDF8] group-hover:via-[#A855F7] group-hover:to-[#F472B6]">
+                        <i data-lucide="arrow-right" class="w-4 h-4 md:w-7 md:h-7"></i>
                     </div>
                 </a> 
-                <span class="text-gray-500 text-[8px] md:text-[11px] font-bold uppercase tracking-[0.15em] pl-6 border-l border-white/10">Working with select brands globally</span>
+                
+                <span class="text-gray-500 text-[8px] md:text-[11px] font-bold uppercase tracking-[0.15em] pl-4 md:pl-6 border-l border-white/10">
+                    Working with select brands globally
+                </span>
             </div>
         </div>
 
-       <div class="col-span-5 relative flex items-center justify-center lg:justify-start lg:pl-16">
-    <div class="relative w-full max-w-[160px] md:max-w-[280px] aspect-[9/16] bg-black/40 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl transform rotate-2 md:rotate-3">
-        <iframe 
-            class="w-full h-full object-cover pointer-events-none" 
-            src="https://www.youtube.com/embed/aHEWOb5pXMw?autoplay=1&mute=1&controls=0&loop=1&playlist=aHEWOb5pXMw" 
-            frameborder="0" 
-            allow="autoplay; encrypted-media">
-        </iframe>
-        
-        <a href="https://youtube.com/shorts/aHEWOb5pXMw" target="_blank" class="absolute inset-0 z-20"></a>
-    </div>
-</div>
+        <div class="col-span-5 relative flex items-center justify-center lg:justify-start lg:pl-16">
+            <div class="relative w-full max-w-[160px] md:max-w-[280px] aspect-[9/16] bg-black/40 border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl transform rotate-2 md:rotate-3">
+                <iframe 
+                    class="w-full h-full object-cover pointer-events-none" 
+                    src="https://www.youtube.com/embed/aHEWOb5pXMw?autoplay=1&mute=1&controls=0&loop=1&playlist=aHEWOb5pXMw" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media">
+                </iframe>
+                <a href="https://youtube.com/shorts/aHEWOb5pXMw" target="_blank" class="absolute inset-0 z-20"></a>
+            </div>
+        </div>
     </div>
 </section>
-<script>
-    lucide.createIcons();
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIconContainer = document.getElementById('menu-icon-container');
-
-    menuToggle.addEventListener('click', () => {
-        const isActive = mobileMenu.classList.toggle('active');
-        menuIconContainer.innerHTML = isActive ? '<i data-lucide="x" class="w-6 h-6"></i>' : '<i data-lucide="menu" class="w-6 h-6"></i>';
-        document.body.style.overflow = isActive ? 'hidden' : '';
-        lucide.createIcons();
-    });
-
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-            document.body.style.overflow = '';
-            lucide.createIcons();
-        });
-    });
-</script>
-</body>
-</html>
 <section id="work" class="max-w-7xl mx-auto px-6 py-10 overflow-visible">
      <div class="max-w-7xl mx-auto">
     <div class="text-center mb-10 reveal"> 
