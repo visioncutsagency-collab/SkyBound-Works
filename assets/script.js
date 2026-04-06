@@ -1,70 +1,49 @@
-/**
- * SkyBound Works - Optimized Scripts
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Lucide Icons
-    const initIcons = () => {
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    };
-    initIcons();
-
-    // 2. Mobile Menu System
-    const menuBtn = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const body = document.body;
-
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            const isActive = mobileMenu.classList.toggle('active');
-            const icon = menuBtn.querySelector('i');
-            if (icon) {
-                icon.setAttribute('data-lucide', isActive ? 'x' : 'menu');
-                initIcons();
-            }
-            body.style.overflow = isActive ? 'hidden' : '';
-        });
-
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                body.style.overflow = '';
-                const icon = menuBtn.querySelector('i');
-                if (icon) {
-                    icon.setAttribute('data-lucide', 'menu');
-                    initIcons();
-                }
-            });
-        });
-    }
-
-    // 3. Scroll Reveal Animation (UI Cards ko wapis chalane ke liye)
-    const observerOptions = {
-        threshold: 0.15
-    };
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('section, .glass-card, .work-card').forEach(el => {
-        el.classList.add('reveal'); 
-        revealObserver.observe(el);
+/<script>
+    // 1. Initial Load for Icons
+    document.addEventListener('DOMContentLoaded', () => {
+        lucide.createIcons();
     });
 
-    // 4. Navbar Background Change
-    const navbar = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('bg-[#0f0a1f]/95', 'backdrop-blur-xl', 'shadow-2xl');
+    // 2. Mobile Menu Logic
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconContainer = document.getElementById('menu-icon-container');
+
+    function toggleMenu() {
+        const isActive = mobileMenu.classList.toggle('active');
+        
+        // Icon change logic (Menu to X)
+        if (isActive) {
+            menuIconContainer.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+            document.body.style.overflow = 'hidden'; // Scroll disable on mobile
         } else {
-            navbar.classList.remove('bg-[#0f0a1f]/95', 'backdrop-blur-xl', 'shadow-2xl');
+            menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            document.body.style.overflow = ''; // Scroll enable
         }
-    }, { passive: true });
-});
+        
+        // Refresh icons after innerHTML change
+        lucide.createIcons();
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // 3. Close Menu on Link Click (Smooth scroll integration)
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            document.body.style.overflow = '';
+            lucide.createIcons();
+        });
+    });
+
+    // 4. Responsive Auto-Fix
+    // Agar screen size change ho (Desktop to Mobile), toh icons reset honge
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+            lucide.createIcons();
+        }
+    });
+</script>

@@ -1,32 +1,59 @@
-/* SkyBound Works - Optimized Premium Stylesheet */
+/* SkyBound Works - Optimized Premium & Responsive Stylesheet */
 
 /* --- SF Pro Display Font Fix --- */
 @font-face {
     font-family: 'SF Pro Display';
     src: url('https://fonts.cdnfonts.com/css/sf-pro-display');
-    font-display: swap; /* Loading ka jhatka khatam karne ke liye */
+    font-display: swap;
+}
+
+/* --- Base Styles & Responsive Reset --- */
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #0f0a1f;
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* Phone par side-scroll khatam */
+    color: white;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* --- Custom Scrollbar --- */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #0f0a1f;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0f0a1f; }
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(#38bdf8, #a855f7);
     border-radius: 10px;
 }
 
-/* --- Base Styles --- */
-body {
-    /* SF Pro Display ko default set kar diya */
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #0f0a1f;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    color: white;
+/* --- Responsive Layout Fixes (Phone Version) --- */
+@media (max-width: 768px) {
+    /* Screenshot ka gap theek karne ke liye padding kam ki */
+    section {
+        padding-top: 4rem !important;
+        padding-bottom: 2rem !important;
+        min-height: auto !important; /* Mobile par bikhra hua na lage */
+    }
+
+    /* Text sizes for mobile */
+    .section-title {
+        font-size: 2rem !important;
+        line-height: 1.1;
+    }
+
+    /* Grid layout fix for mobile */
+    .grid-cols-12 {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    /* Side-by-side override for specific hero sections if needed */
+    .mobile-side-by-side {
+        display: grid !important;
+        grid-template-columns: repeat(12, 1fr) !important;
+    }
 }
 
 /* --- Premium Gradients --- */
@@ -36,51 +63,31 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* --- UI/Glassmorphism Cards (Animation Fixed) --- */
+/* --- Glassmorphism Cards --- */
 .glass-card {
     background: rgba(26, 18, 48, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    /* Transition ko smooth kiya */
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
 
-/* Hover par card upar uthay ga aur glow karega */
-.glass-card:hover {
-    transform: translateY(-12px);
-    border-color: rgba(168, 85, 247, 0.6);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(168, 85, 247, 0.2);
-    z-index: 10;
+@media (min-width: 1024px) {
+    .glass-card:hover {
+        transform: translateY(-12px);
+        border-color: rgba(168, 85, 247, 0.6);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(168, 85, 247, 0.2);
+        z-index: 10;
+    }
 }
 
-/* --- Portfolio/Work Cards --- */
-.work-card {
-    border-radius: 1.5rem;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: #161127;
-    transition: all 0.4s ease;
-}
-
-.work-card:hover {
-    transform: scale(1.03);
-    border-color: rgba(56, 189, 248, 0.5);
-}
-
-/* --- Scroll Reveal Animations --- */
-/* Jab section screen par aaye toh ye chalay ga */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+/* Mobile par hover effects ko disable ya simplify kiya taaki jhatka na lage */
+@media (max-width: 1024px) {
+    .glass-card:active {
+        transform: scale(0.98);
+    }
 }
 
 /* --- Airplane Animation --- */
@@ -88,22 +95,26 @@ body {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-15px) rotate(3deg); }
 }
+.plane-anim { animation: fly 4s ease-in-out infinite; }
 
-.plane-anim {
-    animation: fly 4s ease-in-out infinite;
+/* --- Reveal Animation --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* --- Section Title Utility --- */
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    letter-spacing: -0.025em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
+/* --- Mobile Menu Utility --- */
+#mobile-menu {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-100%);
+    opacity: 0;
 }
-
-@media (min-width: 768px) {
-    .section-title {
-        font-size: 4rem;
-    }
+#mobile-menu.active {
+    transform: translateY(0);
+    opacity: 1;
 }
