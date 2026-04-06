@@ -63,30 +63,96 @@
                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </div>
             </a>
-            <button id="menu-toggle" class="lg:hidden bg-white/5 p-2 rounded-xl border border-white/10">
-                <div id="menu-icon-container"><i data-lucide="menu" class="w-6 h-6"></i></div>
+             <button id="menu-toggle" class="lg:hidden relative z-[200] bg-white/5 p-2 rounded-xl border border-white/10 text-white active:scale-90 transition-all pointer-events-auto cursor-pointer">
+                <div id="menu-icon-container" class="pointer-events-none">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </div>
             </button>
         </div>
     </div>
 </nav>
 
-<div id="mobile-menu" class="fixed inset-0 bg-[#0f0a1f] z-[95] flex flex-col justify-center items-center px-6">
-    <div class="flex flex-col items-center gap-8 text-center">
-        <a href="#home" class="mobile-link text-2xl font-medium uppercase text-white">Home</a>
-        <a href="#work" class="mobile-link text-2xl font-medium uppercase text-white">Work</a>
-        <a href="#services" class="mobile-link text-2xl font-medium uppercase text-white">Services</a>
-        <a href="#pricing" class="mobile-link text-2xl font-medium uppercase text-white">Pricing</a>
-        <a href="#faq" class="mobile-link text-2xl font-medium uppercase text-white">FAQ</a>
+<div id="mobile-menu" class="fixed inset-0 bg-[#0f0a1f] z-[150] flex flex-col justify-center items-center px-6 transition-all duration-500 opacity-0 pointer-events-none translate-y-[-10px]">
+    <div class="flex flex-col items-center gap-8 text-center mb-12">
+        <a href="#home" class="mobile-link text-2xl font-medium tracking-tight text-white hover:opacity-60 transition-opacity">Home</a>
+        <a href="#work" class="mobile-link text-2xl font-medium tracking-tight uppercase text-white hover:opacity-60 transition-opacity">Work</a>
+        <a href="#services" class="mobile-link text-2xl font-medium tracking-tight uppercase text-white hover:opacity-60 transition-opacity">Services</a>
+        <a href="#pricing" class="mobile-link text-2xl font-medium tracking-tight uppercase text-white hover:opacity-60 transition-opacity">Pricing</a>
+        <a href="#faq" class="mobile-link text-2xl font-medium tracking-tight uppercase text-white hover:opacity-60 transition-opacity">FAQ</a>
         
         <a href="https://calendly.com/sky-bound/30min" target="_blank" 
-           class="mobile-link mt-8 flex items-center gap-4 pl-6 pr-1.5 py-1.5 rounded-full bg-white">
-            <span class="text-[12px] text-black font-bold uppercase">Book a Call</span>
+           class="mobile-link mt-6 flex items-center justify-between gap-4 pl-6 pr-1.5 py-1.5 rounded-full bg-white w-fit shadow-xl active:scale-95 transition-transform">
+            <span class="text-[12px] text-black font-bold tracking-[0.1em] uppercase">Book a Call</span>
             <div class="bg-[#0f0a1f] text-white w-8 h-8 flex items-center justify-center rounded-full">
                 <i data-lucide="phone" class="w-3.5 h-3.5"></i>
             </div>
         </a>
     </div>
+
+    <div class="flex flex-col items-center gap-6 border-t border-white/10 pt-10 w-full max-w-[280px]">
+        <span class="text-gray-500 text-[10px] uppercase tracking-[0.5em] font-black">Connect with us</span>
+        <div class="flex gap-10">
+            <a href="https://www.facebook.com/people/SkyBound-Works/100064840355178/" target="_blank" class="text-white hover:text-[#38BDF8] transition-colors">
+                <i data-lucide="facebook" class="w-7 h-7"></i>
+            </a>
+            <a href="https://www.instagram.com/skyboundwork" target="_blank" class="text-white hover:text-[#A855F7] transition-colors">
+                <i data-lucide="instagram" class="w-7 h-7"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/112011251" target="_blank" class="text-white hover:text-[#F472B6] transition-colors">
+                <i data-lucide="linkedin" class="w-7 h-7"></i>
+            </a>
+        </div>
+    </div>
 </div>
+
+<style>
+    /* Menu Active State CSS */
+    #mobile-menu.active {
+        opacity: 1;
+        pointer-events: auto;
+        translate: 0 0;
+    }
+</style>
+
+<script>
+    // Master function for Icons and Menu
+    function initMenu() {
+        lucide.createIcons();
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconContainer = document.getElementById('menu-icon-container');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.onclick = (e) => {
+                e.preventDefault();
+                const isActive = mobileMenu.classList.toggle('active');
+                
+                if (isActive) {
+                    menuIconContainer.innerHTML = '<i data-lucide="x" class="w-7 h-7"></i>';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-7 h-7"></i>';
+                    document.body.style.overflow = '';
+                }
+                lucide.createIcons(); // Re-render icons inside button
+            };
+        }
+
+        // Close menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.onclick = () => {
+                mobileMenu.classList.remove('active');
+                menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-7 h-7"></i>';
+                document.body.style.overflow = '';
+                lucide.createIcons();
+            };
+        });
+    }
+
+    // Run on load
+    window.addEventListener('DOMContentLoaded', initMenu);
+</script>
 <section id="home" class="relative min-h-screen flex items-center pt-24 md:pt-32 pb-16 px-6 max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center overflow-visible">
     
     <div class="absolute top-0 left-[-5%] w-[600px] h-[600px] bg-[#38BDF8]/10 blur-[130px] -z-10 animate-pulse"></div>
