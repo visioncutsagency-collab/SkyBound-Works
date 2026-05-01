@@ -155,8 +155,9 @@
 </script>
 <section id="home" class="relative min-h-screen flex items-center pt-24 md:pt-32 pb-16 px-6 max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center overflow-visible">
     
-    <div class="absolute top-0 left-[-5%] w-[600px] h-[600px] bg-[#38BDF8]/10 blur-[130px] -z-10 animate-pulse"></div>
-    <div class="absolute bottom-0 right-[-5%] w-[500px] h-[500px] bg-[#A855F7]/10 blur-[130px] -z-10"></div>
+    <!-- Background Blurs (Optimized blur for performance) -->
+    <div class="absolute top-0 left-[-5%] w-[600px] h-[600px] bg-[#38BDF8]/10 blur-[100px] -z-10 animate-pulse"></div>
+    <div class="absolute bottom-0 right-[-5%] w-[500px] h-[500px] bg-[#A855F7]/10 blur-[100px] -z-10"></div>
 
     <div class="lg:col-span-7 flex flex-col items-start text-left z-10 mt-8 lg:mt-16 lg:pl-12">
         <h1 class="text-[48px] sm:text-7xl md:text-8xl lg:text-[95px] font-black mb-6 uppercase tracking-[-0.06em] text-white leading-[0.85] sf-font">
@@ -187,24 +188,28 @@
         </div>
     </div>
 
-   <div class="lg:col-span-5 relative flex items-center justify-center lg:justify-start lg:pl-16 mt-8 lg:mt-[-50px] z-20">
-    
-    <div class="work-card relative w-[280px] aspect-[9/16] bg-black/40 border border-white/10 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:scale-[1.05] hover:border-fuchsia-500/40 transition-all duration-700 ease-out">
-        
-        <iframe 
-            class="w-full h-full object-cover pointer-events-none"
-            src="https://www.youtube.com/embed/aHEWOb5pXMw?autoplay=1&mute=1&controls=0&loop=1&playlist=aHEWOb5pXMw&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&disablekb=1" 
-            title="SkyBound Works Video"
-            frameborder="0" 
-            allow="autoplay; encrypted-media">
-        </iframe>
-        
-        <a href="https://youtube.com/shorts/aHEWOb5pXMw" target="_blank" class="absolute inset-0 z-20"></a>
+    <div class="lg:col-span-5 relative flex items-center justify-center lg:justify-start lg:pl-16 mt-8 lg:mt-[-50px] z-20">
+        <!-- Video Card -->
+        <div class="work-card relative w-[280px] aspect-[9/16] bg-black/40 border border-white/10 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:scale-[1.05] hover:border-fuchsia-500/40 transition-all duration-700 ease-out">
+            
+            <!-- Updated YouTube Embed with NMJE-ughjfE -->
+            <iframe 
+                class="w-full h-full object-cover pointer-events-none"
+                src="https://www.youtube.com/embed/NMJE-ughjfE?autoplay=1&mute=1&controls=0&loop=1&playlist=NMJE-ughjfE&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0&disablekb=1&loading=lazy" 
+                title="SkyBound Works Video"
+                frameborder="0" 
+                allow="autoplay; encrypted-media">
+            </iframe>
+            
+            <!-- Clickable Link Update -->
+            <a href="https://youtube.com/shorts/NMJE-ughjfE" target="_blank" class="absolute inset-0 z-30"></a>
 
-        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+        </div>
     </div>
-</div>
 </section>
+
 <section id="work" class="max-w-7xl mx-auto px-6 py-10 overflow-visible">
      <div class="max-w-7xl mx-auto">
     <div class="text-center mb-10 reveal"> 
@@ -253,41 +258,52 @@
     </div>
 </div>
     <div class="mb-20">
-        <div class="text-center mb-10">
-            <h3 class="text-3xl font-[600] tracking-widest inline-block pb-1 text-white">
-                <span class="hero-gradient">Short Form </span>Content
-            </h3>
+    <div class="text-center mb-10">
+        <h3 class="text-3xl font-[600] tracking-widest inline-block pb-1 text-white">
+            <span class="hero-gradient">Short Form </span>Content
+        </h3>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 md:gap-6">
+        <!-- Video 1 -->
+        <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+            <iframe class="w-full h-full pointer-events-none" 
+                src="https://www.youtube.com/embed/Z6mdQqZDXQU?autoplay=1&mute=1&loop=1&playlist=Z6mdQqZDXQU&controls=0&modestbranding=1" 
+                loading="lazy" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+            <a href="https://youtube.com/shorts/Z6mdQqZDXQU" target="_blank" class="absolute inset-0 z-10"></a>
         </div>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 md:gap-6">
-            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
-                <iframe class="w-full h-full pointer-events-none" 
-                    src="https://www.youtube.com/embed/Z6mdQqZDXQU?autoplay=1&mute=1&loop=1&playlist=Z6mdQqZDXQU&controls=0&modestbranding=1" 
-                    loading="lazy" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-                <a href="https://youtube.com/shorts/Z6mdQqZDXQU" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
-                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/FzICtfCIgnw?autoplay=1&mute=1&loop=1&playlist=FzICtfCIgnw&controls=0" loading="lazy" frameborder="0"></iframe>
-                <a href="https://youtube.com/shorts/FzICtfCIgnw" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
-                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/nhUAxKwosLM?autoplay=1&mute=1&loop=1&playlist=nhUAxKwosLM&controls=0" loading="lazy" frameborder="0"></iframe>
-                <a href="https://youtube.com/shorts/nhUAxKwosLM" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
-                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/GAI2W_qis_s?autoplay=1&mute=1&loop=1&playlist=GAI2W_qis_s&controls=0" loading="lazy" frameborder="0"></iframe>
-                <a href="https://youtube.com/shorts/GAI2W_qis_s" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
-                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/8vqpQE1lgTE?autoplay=1&mute=1&loop=1&playlist=8vqpQE1lgTE&controls=0" loading="lazy" frameborder="0"></iframe>
-                <a href="https://youtube.com/shorts/8vqpQE1lgTE" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
-            <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
-                <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/WrGQxJCvODM?autoplay=1&mute=1&loop=1&playlist=WrGQxJCvODM&controls=0" loading="lazy" frameborder="0"></iframe>
-                <a href="https://youtube.com/shorts/WrGQxJCvODM" target="_blank" class="absolute inset-0 z-10"></a>
-            </div>
+
+        <!-- Video 2 -->
+        <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/FzICtfCIgnw?autoplay=1&mute=1&loop=1&playlist=FzICtfCIgnw&controls=0" loading="lazy" frameborder="0"></iframe>
+            <a href="https://youtube.com/shorts/FzICtfCIgnw" target="_blank" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/aHEWOb5pXMw?autoplay=1&mute=1&loop=1&playlist=aHEWOb5pXMw&controls=0" loading="lazy" frameborder="0"></iframe>
+            <a href="https://youtube.com/shorts/aHEWOb5pXMw" target="_blank" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <!-- Video 4: Replaced f8hmEliGgEw with ZJO0ycrUPuM -->
+        <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/ZJO0ycrUPuM?autoplay=1&mute=1&loop=1&playlist=ZJO0ycrUPuM&controls=0" loading="lazy" frameborder="0"></iframe>
+            <a href="https://youtube.com/shorts/ZJO0ycrUPuM" target="_blank" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <!-- Video 5 -->
+        <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/8vqpQE1lgTE?autoplay=1&mute=1&loop=1&playlist=8vqpQE1lgTE&controls=0" loading="lazy" frameborder="0"></iframe>
+            <a href="https://youtube.com/shorts/8vqpQE1lgTE" target="_blank" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <!-- Video 6 -->
+        <div class="work-card aspect-[9/16] relative group overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-xl max-w-[400px] mx-auto w-full hover:border-fuchsia-500/40 transition-all duration-500">
+            <iframe class="w-full h-full pointer-events-none" src="https://www.youtube.com/embed/WrGQxJCvODM?autoplay=1&mute=1&loop=1&playlist=WrGQxJCvODM&controls=0" loading="lazy" frameborder="0"></iframe>
+            <a href="https://youtube.com/shorts/WrGQxJCvODM" target="_blank" class="absolute inset-0 z-10"></a>
         </div>
     </div>
+</div>
 
 
     <div class="mt-20">
